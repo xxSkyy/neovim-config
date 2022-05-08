@@ -16,3 +16,6 @@ map('n', '<C-H>', '<C-W><C-H>', {})
 
 -- Search for files easily
 map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
+
+-- Autocomplete
+map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
