@@ -14,9 +14,9 @@ require('plug')      -- Plugins
 
 require('nvim-tree').setup{}
 require('lualine').setup {
-  options = {
-    theme = 'dracula-nvim'
-  }
+--  options = {
+--    theme = 'dracula-nvim'
+--  }
 }
 require'lspconfig'.volar.setup{
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
