@@ -17,14 +17,13 @@ require('kanagawa').setup({
   transparent = true
 })
 vim.cmd([[colorscheme kanagawa]])
--- 
 
 -- Nvim Lsp Object
-require("lsp-format").setup {}
 require "lspconfig".gopls.setup { on_attach = require "lsp-format".on_attach }
 local nvim_lsp = require'lspconfig'
 
-
+-- If Nvim is not running under VSCode  enable those extensions
+if vim.g.vscode == nil then
 -- Nvim Tree Navigation
 require('nvim-tree').setup{}
 
@@ -113,3 +112,10 @@ require("prettier").setup({
   use_tabs = false,
   vue_indent_script_and_style = false,
 })
+end
+
+
+
+
+
+
