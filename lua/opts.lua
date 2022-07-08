@@ -17,12 +17,10 @@ opt.fileencoding = 'utf8'        -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
--- cmd('colorscheme dracula')       -- cmd:  Set the colorscheme
 vim.g.vscode_transparent = 1
 vim.g.vscode_italic_comment = 1
 vim.g.vscode_disable_nvimtree_bg = true
 vim.g.vscode_style = "dark"
-vim.cmd([[colorscheme vscode]])
 
 
 -- [[ Search ]]

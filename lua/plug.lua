@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
  	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   
   use {                                              -- filesystem navigation
-    'kyazdani42/nvim-tree.lua',
+          'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'        -- filesystem icons
   }
   use 'wbthomason/packer.nvim' -- Package manager
@@ -27,4 +27,29 @@ return require('packer').startup(function(use)
   requires = { {'nvim-lua/plenary.nvim'} }
   }
   use "mg979/vim-visual-multi"
+  use "rebelot/kanagawa.nvim"
+  use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+use {
+    'saecki/crates.nvim',
+    tag = 'v0.2.1',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+        require('crates').setup()
+    end,
+  }
+  use "github/copilot.vim"
+  use "kabouzeid/nvim-lspinstall"
+  use "jose-elias-alvarez/null-ls.nvim"
+  use "MunifTanjim/prettier.nvim"
+  use "lukas-reineke/lsp-format.nvim"
 end)
