@@ -16,6 +16,10 @@ map('n', '<Down>', '<Nop>', {})
 map('n', '<Left>', '<Nop>', {})
 map('n', '<Right>', '<Nop>', {})
 
+-- Pasting yanked not deleted n' yanked value
+map('n', ',p', '"0p', {})
+map('n', ',P', '"0P', {})
+
 -- If it's not under VSCode add those mappings
 if vim.g.vscode == nil then
 
