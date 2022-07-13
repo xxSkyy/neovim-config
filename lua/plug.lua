@@ -5,8 +5,7 @@
 return require('packer').startup(function(use)
   -- [[ Plugins Go Here ]]
   use "hrsh7th/nvim-cmp" --completion
- 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
-  
+  use "hrsh7th/cmp-nvim-lsp"
   use {                                              -- filesystem navigation
           'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'        -- filesystem icons
@@ -47,9 +46,11 @@ use {
         require('crates').setup()
     end,
   }
-  use "github/copilot.vim"
+  -- use "github/copilot.vim"
   use "kabouzeid/nvim-lspinstall"
   use "jose-elias-alvarez/null-ls.nvim"
   use "MunifTanjim/prettier.nvim"
   use "lukas-reineke/lsp-format.nvim"
+
 end)
+

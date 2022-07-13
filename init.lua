@@ -16,11 +16,17 @@ require('plug')      -- Plugins
 require('kanagawa').setup({
   transparent = true
 })
+
+
 vim.cmd([[colorscheme kanagawa]])
 
 -- Nvim Lsp Object
 require "lspconfig".gopls.setup { on_attach = require "lsp-format".on_attach }
 local nvim_lsp = require'lspconfig'
+
+-- Nvim Cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- If Nvim is not running under VSCode  enable those extensions
 if vim.g.vscode == nil then
@@ -34,16 +40,33 @@ require('lualine').setup {
   }
 }
 
+-- Typescript server
+nvim_lsp.tsserver.setup{
+  root_dir = nvim_lsp.util.root_pattern("package.json")
+}
+
 -- Volar - Vue devtools
 require'lspconfig'.volar.setup{
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'tsx'}
 }
 
 -- Autocompletion
-require'cmp'.setup {
+local cmp = require'cmp'
+cmp.setup {
  sources = {
+   {name = 'crates'},
+   {name = 'nvim_lsp'}
 -- 	{ name = 'cmp_tabnine' },
  },
+     mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
 }
 
 ---- RUST
@@ -68,7 +91,10 @@ nvim_lsp.rust_analyzer.setup({
 ---------
 
 -- Deno tools
-nvim_lsp.denols.setup{}
+nvim_lsp.denols.setup{
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern("deno.json"),
+}
 
 -- Prettier
 require("null-ls").setup{}
