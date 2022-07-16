@@ -28,8 +28,13 @@ local nvim_lsp = require'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+require'nvim_comment'.setup{}
+
 -- If Nvim is not running under VSCode  enable those extensions
 if vim.g.vscode == nil then
+-- Jumping over code
+require'hop'.setup{}
+
 -- Nvim Tree Navigation
 require('nvim-tree').setup{}
 
@@ -60,13 +65,31 @@ cmp.setup {
    {name = 'nvim_lsp'}
 -- 	{ name = 'cmp_tabnine' },
  },
-     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
+ mapping = {
+     ['<Tab>'] = function(fallback)                        
+      if cmp.visible() then                               
+        cmp.select_next_item()                            
+      else                                                
+        fallback()                                        
+      end                                                 
+    end,   
+    ['<S-Tab>'] = function(fallback)                        
+      if cmp.visible() then                               
+        cmp.select_prev_item()                            
+      else                                                
+        fallback()                                        
+      end                                                 
+    end,
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true })
+ }
+--     mapping = cmp.mapping.preset.insert({
+--      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+--      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--      ['<C-Space>'] = cmp.mapping.complete(),
+--      ['<C-e>'] = cmp.mapping.abort(),
+--      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+--    }),
 }
 
 ---- RUST

@@ -30,6 +30,7 @@ map('n', 't', [[:NvimTreeToggle<CR>]], {})
 map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
 
 -- Code Formatting
-map('n', 'f', [[:Prettier<CR>]],{})
+map('n', '<C-F>', [[:Prettier<CR>]],{})
 
+map('n', '<C-\\>', [[:HopWord<CR>]],{})
 end
