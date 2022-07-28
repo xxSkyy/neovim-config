@@ -32,5 +32,10 @@ map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
 -- Code Formatting
 map('n', '<C-F>', [[:Prettier<CR>]],{})
 
+-- Jump to selected word
 map('n', '<C-\\>', [[:HopWord<CR>]],{})
+
+-- Switch between tabs
+map('n', 'gt', '[[:BufferNext<CR>]]', {})
+map('n', 'gT', '[[:BufferPrevious<CR>]]', {})
 end

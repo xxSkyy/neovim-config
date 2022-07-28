@@ -113,6 +113,13 @@ nvim_lsp.rust_analyzer.setup({
 })
 ---------
 
+-- Godot tools
+nvim_lsp.gdscript.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+---------
+
+
 -- Deno tools
 nvim_lsp.denols.setup{
   capabilities = capabilities,
@@ -124,24 +131,24 @@ require("null-ls").setup{}
 
 require("prettier").setup({
   bin = 'prettier', -- or `prettierd`
---  filetypes = {
---    "css",
---    "graphql",
---    "html",
---    "javascript",
---    "javascriptreact",
---    "json",
---    "less",
---    "markdown",
---    "scss",
---    "typescript",
---    "typescriptreact",
---    "yaml",
---    "vue",
---    "rs",
---    "rust",
---    "lua"
---  },
+  -- filetypes = {
+  --   "css",
+  --   "graphql",
+  --   "html",
+  --   "javascript",
+  --   "javascriptreact",
+  --   "json",
+  --   "less",
+  --   "markdown",
+  --   "scss",
+  --   "typescript",
+  --   "typescriptreact",
+  --   "yaml",
+  --   "vue",
+  --   "rs",
+  --   "rust",
+  --   "lua"
+  -- },
 
   -- prettier format options (you can use config files too. ex: `.prettierrc`)
   arrow_parens = "always",
