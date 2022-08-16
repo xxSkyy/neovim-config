@@ -24,7 +24,7 @@ map('n', ',P', '"0P', {})
 if vim.g.vscode == nil then
 
 -- Toggle nvim-tree
-map('n', 't', [[:NvimTreeToggle<CR>]], {})
+map('n', 't', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
 
 -- Search for files easily
 map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
@@ -33,7 +33,7 @@ map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
 map('n', '<C-F>', [[:Prettier<CR>]],{})
 
 -- Jump to selected word
-map('n', '<C-\\>', [[:HopWord<CR>]],{})
+map('n', '<C-u>', [[:HopWord<CR>]],{})
 
 -- Switch between tabs
 map('n', 'gt', '[[:BufferNext<CR>]]', {})

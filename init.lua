@@ -24,10 +24,6 @@ vim.cmd([[colorscheme kanagawa]])
 require "lspconfig".gopls.setup { on_attach = require "lsp-format".on_attach }
 local nvim_lsp = require'lspconfig'
 
--- Nvim Cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 require'nvim_comment'.setup{}
 
 -- If Nvim is not running under VSCode  enable those extensions
@@ -62,7 +58,9 @@ local cmp = require'cmp'
 cmp.setup {
  sources = {
    {name = 'crates'},
-   {name = 'nvim_lsp'}
+   {name = 'rust-analyzer'},
+   {name = 'nvim_lsp'},
+   {name = 'buffer'}
 -- 	{ name = 'cmp_tabnine' },
  },
  mapping = {
@@ -83,14 +81,12 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({ select = true })
  }
---     mapping = cmp.mapping.preset.insert({
---      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---      ['<C-f>'] = cmp.mapping.scroll_docs(4),
---      ['<C-Space>'] = cmp.mapping.complete(),
---      ['<C-e>'] = cmp.mapping.abort(),
---      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
---    }),
 }
+
+
+-- Nvim Cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 ---- RUST
 -- Rust Crates version helper
@@ -104,6 +100,12 @@ nvim_lsp.rust_analyzer.setup({
       -- to enable rust-analyzer settings visit:
       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
       ["rust-analyzer"] = {
+        completion = {
+          addCallArgumentSnippets = false,
+          postfix = {
+            enable = false
+          }
+        },
         -- enable clippy diagnostics on save
         checkOnSave = {
           command = "clippy"
