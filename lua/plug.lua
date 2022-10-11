@@ -64,7 +64,17 @@ use {
   'romgrk/barbar.nvim',
   requires = {'kyazdani42/nvim-web-devicons'}
 }
-  use "habamax/vim-godot"
+  use "habamax/vim-godot" 
+  use "folke/lua-dev.nvim"
+  use 'nvim-treesitter/nvim-treesitter'
+  use  {
+    'L3MON4D3/LuaSnip',
+    config = function() 
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end
+
+  }
+  use { 'saadparwaiz1/cmp_luasnip' }
 end)
 
 

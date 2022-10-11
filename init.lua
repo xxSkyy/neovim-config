@@ -17,7 +17,6 @@ require('kanagawa').setup({
   transparent = true
 })
 
-
 vim.cmd([[colorscheme kanagawa]])
 
 -- Nvim Lsp Object
@@ -82,7 +81,6 @@ cmp.setup {
     ['<CR>'] = cmp.mapping.confirm({ select = true })
  }
 }
-
 
 -- Nvim Cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()

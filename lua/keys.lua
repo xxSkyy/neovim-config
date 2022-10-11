@@ -33,7 +33,7 @@ map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
 map('n', '<C-F>', [[:Prettier<CR>]],{})
 
 -- Jump to selected word
-map('n', '<C-u>', [[:HopWord<CR>]],{})
+map('n', '<C-y>', [[:HopWord<CR>]],{})
 
 -- Switch between tabs
 map('n', 'gt', '[[:BufferNext<CR>]]', {})
