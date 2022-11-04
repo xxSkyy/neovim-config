@@ -81,8 +81,10 @@ _G.packer_plugins = {
     url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
+    load_after = {},
     loaded = true,
-    path = "/home/sky/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    needs_bufread = true,
+    path = "/home/sky/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["barbar.nvim"] = {
@@ -115,6 +117,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sky/.local/share/nvim/site/pack/packer/start/crates.nvim",
     url = "https://github.com/saecki/crates.nvim"
+  },
+  ["diffview.nvim"] = {
+    config = { "\27LJ\2\nÍ\f\0\0\n\0`\3À\0016\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\0015\3^\0005\4\4\0005\5\6\0009\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6\16\0=\6\17\0059\6\18\0=\6\19\0059\6\20\0=\6\21\0059\6\22\0=\6\23\0059\6\24\0'\b\25\0B\6\2\2=\6\26\0059\6\24\0'\b\27\0B\6\2\2=\6\28\0059\6\24\0'\b\29\0B\6\2\2=\6\30\0059\6\24\0'\b\31\0B\6\2\2=\6 \0059\6\24\0'\b!\0B\6\2\2=\6\"\5=\5#\0044\5\0\0=\5$\0044\5\0\0=\5%\0044\5\3\0005\6'\0005\a&\0>\a\1\0069\a(\0'\t\25\0B\a\2\0?\a\0\0>\6\1\0055\6*\0005\a)\0>\a\1\0069\a(\0'\t\27\0B\a\2\0?\a\0\0>\6\2\5=\5+\0044\5\4\0005\6-\0005\a,\0>\a\1\0069\a(\0'\t\29\0B\a\2\0?\a\0\0>\6\1\0055\6/\0005\a.\0>\a\1\0069\a(\0'\t\25\0B\a\2\0?\a\0\0>\6\2\0055\0061\0005\a0\0>\a\1\0069\a(\0'\t\27\0B\a\2\0?\a\0\0>\6\3\5=\0052\0045\0054\0009\0063\0=\0065\0059\0066\0=\0067\0059\0068\0=\0069\0059\6:\0=\6;\0059\6<\0=\6=\0059\6>\0=\6?\0059\6@\0=\6A\0059\6B\0=\6C\0059\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6D\0=\6E\0059\6F\0=\6G\0059\6\16\0=\6\17\0059\6\18\0=\6\19\0059\6\20\0=\6\21\0059\6\22\0=\6\23\5=\5H\0045\5J\0009\6I\0=\6K\0059\6L\0=\6M\0059\6N\0=\6O\0059\6B\0=\6C\0059\6P\0=\6Q\0059\6R\0=\6S\0059\0063\0=\0065\0059\0066\0=\0067\0059\0068\0=\0069\0059\0068\0=\6T\0059\0068\0=\6U\0059\6V\0*\b\1\0B\6\2\2=\6W\0059\6V\0*\b\2\0B\6\2\2=\6X\0059\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6\16\0=\6\17\0059\6\18\0=\6\19\5=\5Y\0045\5Z\0009\0068\0=\6\a\0059\6[\0=\6\\\5=\5]\4=\4_\3B\1\2\1K\0\1\0\fkeymaps\1\0\0\17option_panel\6q\nclose\1\0\0\23file_history_panel\n<c-f>\n<c-b>\16scroll_view\18<2-LeftMouse>\6o\azM\20close_all_folds\azR\19open_all_folds\6y\14copy_hash\f<C-A-d>\21open_in_diffview\ag!\1\0\0\foptions\15file_panel\6R\18refresh_files\6i\18listing_style\6L\20open_commit_log\6X\18restore_entry\6U\16unstage_all\6S\14stage_all\6-\23toggle_stage_entry\t<cr>\17select_entry\6k\15prev_entry\6j\1\0\0\15next_entry\ndiff4\1\3\0\0\0\b3do\1\3\0\0\6n\6x\1\3\0\0\0\b2do\1\3\0\0\6n\6x\1\3\0\0\0\b1do\1\3\0\0\6n\6x\ndiff3\1\3\0\0\0\b3do\1\3\0\0\6n\6x\fdiffget\1\3\0\0\0\b2do\1\3\0\0\6n\6x\ndiff2\ndiff1\tview\adx\tnone\15<leader>ca\ball\15<leader>cb\tbase\15<leader>ct\vtheirs\15<leader>co\tours\20conflict_choose\a]x\18next_conflict\a[x\18prev_conflict\14<leader>b\17toggle_files\14<leader>e\16focus_files\f<C-w>gf\18goto_file_tab\15<C-w><C-f>\20goto_file_split\agf\14goto_file\f<s-tab>\22select_prev_entry\n<tab>\1\0\0\22select_next_entry\1\0\1\21disable_defaults\1\nsetup\rdiffview\21diffview.actions\frequire\a€€À™\4\1€€Àþ\v\1€€Àþ\3\0" },
+    loaded = true,
+    path = "/home/sky/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
@@ -283,42 +291,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\21show_end_of_line\2\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
-time([[Config for indent-blankline.nvim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
--- Config for: crates.nvim
-time([[Config for crates.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vcrates\frequire\0", "config", "crates.nvim")
-time([[Config for crates.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: hop.nvim
-time([[Config for hop.nvim]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "hop.nvim")
-time([[Config for hop.nvim]], false)
--- Config for: nvim-ts-autotag
-time([[Config for nvim-ts-autotag]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20nvim-ts-autotag\frequire\0", "config", "nvim-ts-autotag")
-time([[Config for nvim-ts-autotag]], false)
 -- Config for: nvim-ts-context-commentstring
 time([[Config for nvim-ts-context-commentstring]], true)
 try_loadstring("\27LJ\2\nu\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\26context_commentstring\1\0\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-ts-context-commentstring")
@@ -327,6 +299,51 @@ time([[Config for nvim-ts-context-commentstring]], false)
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: diffview.nvim
+time([[Config for diffview.nvim]], true)
+try_loadstring("\27LJ\2\nÍ\f\0\0\n\0`\3À\0016\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\0015\3^\0005\4\4\0005\5\6\0009\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6\16\0=\6\17\0059\6\18\0=\6\19\0059\6\20\0=\6\21\0059\6\22\0=\6\23\0059\6\24\0'\b\25\0B\6\2\2=\6\26\0059\6\24\0'\b\27\0B\6\2\2=\6\28\0059\6\24\0'\b\29\0B\6\2\2=\6\30\0059\6\24\0'\b\31\0B\6\2\2=\6 \0059\6\24\0'\b!\0B\6\2\2=\6\"\5=\5#\0044\5\0\0=\5$\0044\5\0\0=\5%\0044\5\3\0005\6'\0005\a&\0>\a\1\0069\a(\0'\t\25\0B\a\2\0?\a\0\0>\6\1\0055\6*\0005\a)\0>\a\1\0069\a(\0'\t\27\0B\a\2\0?\a\0\0>\6\2\5=\5+\0044\5\4\0005\6-\0005\a,\0>\a\1\0069\a(\0'\t\29\0B\a\2\0?\a\0\0>\6\1\0055\6/\0005\a.\0>\a\1\0069\a(\0'\t\25\0B\a\2\0?\a\0\0>\6\2\0055\0061\0005\a0\0>\a\1\0069\a(\0'\t\27\0B\a\2\0?\a\0\0>\6\3\5=\0052\0045\0054\0009\0063\0=\0065\0059\0066\0=\0067\0059\0068\0=\0069\0059\6:\0=\6;\0059\6<\0=\6=\0059\6>\0=\6?\0059\6@\0=\6A\0059\6B\0=\6C\0059\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6D\0=\6E\0059\6F\0=\6G\0059\6\16\0=\6\17\0059\6\18\0=\6\19\0059\6\20\0=\6\21\0059\6\22\0=\6\23\5=\5H\0045\5J\0009\6I\0=\6K\0059\6L\0=\6M\0059\6N\0=\6O\0059\6B\0=\6C\0059\6P\0=\6Q\0059\6R\0=\6S\0059\0063\0=\0065\0059\0066\0=\0067\0059\0068\0=\0069\0059\0068\0=\6T\0059\0068\0=\6U\0059\6V\0*\b\1\0B\6\2\2=\6W\0059\6V\0*\b\2\0B\6\2\2=\6X\0059\6\5\0=\6\a\0059\6\b\0=\6\t\0059\6\n\0=\6\v\0059\6\f\0=\6\r\0059\6\14\0=\6\15\0059\6\16\0=\6\17\0059\6\18\0=\6\19\5=\5Y\0045\5Z\0009\0068\0=\6\a\0059\6[\0=\6\\\5=\5]\4=\4_\3B\1\2\1K\0\1\0\fkeymaps\1\0\0\17option_panel\6q\nclose\1\0\0\23file_history_panel\n<c-f>\n<c-b>\16scroll_view\18<2-LeftMouse>\6o\azM\20close_all_folds\azR\19open_all_folds\6y\14copy_hash\f<C-A-d>\21open_in_diffview\ag!\1\0\0\foptions\15file_panel\6R\18refresh_files\6i\18listing_style\6L\20open_commit_log\6X\18restore_entry\6U\16unstage_all\6S\14stage_all\6-\23toggle_stage_entry\t<cr>\17select_entry\6k\15prev_entry\6j\1\0\0\15next_entry\ndiff4\1\3\0\0\0\b3do\1\3\0\0\6n\6x\1\3\0\0\0\b2do\1\3\0\0\6n\6x\1\3\0\0\0\b1do\1\3\0\0\6n\6x\ndiff3\1\3\0\0\0\b3do\1\3\0\0\6n\6x\fdiffget\1\3\0\0\0\b2do\1\3\0\0\6n\6x\ndiff2\ndiff1\tview\adx\tnone\15<leader>ca\ball\15<leader>cb\tbase\15<leader>ct\vtheirs\15<leader>co\tours\20conflict_choose\a]x\18next_conflict\a[x\18prev_conflict\14<leader>b\17toggle_files\14<leader>e\16focus_files\f<C-w>gf\18goto_file_tab\15<C-w><C-f>\20goto_file_split\agf\14goto_file\f<s-tab>\22select_prev_entry\n<tab>\1\0\0\22select_next_entry\1\0\1\21disable_defaults\1\nsetup\rdiffview\21diffview.actions\frequire\a€€À™\4\1€€Àþ\v\1€€Àþ\3\0", "config", "diffview.nvim")
+time([[Config for diffview.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\nW\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\21show_end_of_line\2\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: hop.nvim
+time([[Config for hop.nvim]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "hop.nvim")
+time([[Config for hop.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
+-- Config for: crates.nvim
+time([[Config for crates.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vcrates\frequire\0", "config", "crates.nvim")
+time([[Config for crates.nvim]], false)
+-- Config for: nvim-ts-autotag
+time([[Config for nvim-ts-autotag]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20nvim-ts-autotag\frequire\0", "config", "nvim-ts-autotag")
+time([[Config for nvim-ts-autotag]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd LuaSnip ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

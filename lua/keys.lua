@@ -1,6 +1,8 @@
 --[[ keys.lua ]]
 local map = vim.api.nvim_set_keymap
 
+
+
 -- remap the key used to leave insert mode
 map('i', 'jk', '', {})
 
@@ -15,11 +17,25 @@ map('n', '<Up>', '<Nop>', {})
 map('n', '<Down>', '<Nop>', {})
 map('n', '<Left>', '<Nop>', {})
 map('n', '<Right>', '<Nop>', {})
+
 -- In input mode also, no more
-map('i', '<Up>', '<Nop>', {})
-map('i', '<Down>', '<Nop>', {})
-map('i', '<Left>', '<Nop>', {})
-map('i', '<Right>', '<Nop>', {})
+-- Update: It was stupid
+-- map('i', '<Up>', '<Nop>', {})
+-- map('i', '<Down>', '<Nop>', {})
+-- map('i', '<Left>', '<Nop>', {})
+-- map('i', '<Right>', '<Nop>', {})
+
+-- Terminal mappings out of console
+map('t', '<C-h>', '<C-\\><C-N><C-w>h', {})
+map('t', '<C-j>', '<C-\\><C-N><C-w>j', {})
+map('t', '<C-k>', '<C-\\><C-N><C-w>k', {})
+map('t', '<C-l>', '<C-\\><C-N><C-w>l', {})
+
+-- Open floating inline error
+map("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true })
+
+-- Lsp rename
+map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
 
 -- Pasting yanked not deleted n' yanked value
 map('n', ',p', '"0p', {})
@@ -46,4 +62,7 @@ map('n', '<C-y>', [[:HopWord<CR>]],{})
 -- Switch between tabs
 map('n', 'gt', '[[:BufferNext<CR>]]', {})
 map('n', 'gT', '[[:BufferPrevious<CR>]]', {})
+
+-- Git Diff view
+map('n', 'gd', '[[:DiffviewOpen<CR>]]', {})
 end
