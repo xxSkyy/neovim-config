@@ -11,7 +11,7 @@ require('vars')      -- Variables
 require('opts')      -- Options
 require('keys')      -- Keymaps
 
-Capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 require "lspconfig".gopls.setup { on_attach = require "lsp-format".on_attach }
 
 require('tweaks/clipboard')

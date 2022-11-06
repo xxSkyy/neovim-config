@@ -2,9 +2,10 @@ local util = require 'lspconfig.util'
 local function get_typescript_server_path(root_dir)
 
   local global_ts = '/home/sky/.nvm/versions/node/v16.16.0/lib/node_modules/typescript/lib'
-  -- if vim.fn.has('macunix') then
-  --   -- Mac path
-  -- end
+  if vim.fn.has('macunix') then
+    -- Mac path
+    global_ts = '/Users/sky/.nvm/versions/node/v14.20.0/lib/node_modules/typescript/lib'
+  end
 
   -- Alternative location if installed as root:
   -- local global_ts = '/usr/local/lib/node_modules/typescript/lib'
