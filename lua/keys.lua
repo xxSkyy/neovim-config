@@ -56,7 +56,7 @@ map('n', '<C-E>', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
 
 -- Search for files easily
 map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
-map('n', '<C-L>', [[:Telescope live_grep<CR>]], {})
+map('n', '<C-G>', [[:Telescope live_grep<CR>]], {})
 
 -- Code Formatting
 map('n', '<C-F>', [[:Prettier<CR>]],{})
