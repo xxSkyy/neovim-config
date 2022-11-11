@@ -2,10 +2,18 @@
 require("plugins/packer")
 
 -- Color scheme
-require('kanagawa').setup({
-  transparent = true
+require('nightfox').setup({
+  options = {
+    transparent = true,
+
+    styles = {
+      comments = "italic",
+      keywords = "italic",
+      types = "italic,bold",
+    }
+  }
 })
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme nightfox]])
 
 -- If Nvim is not running under VSCode  enable those extensions
 if vim.g.vscode == nil then
@@ -13,12 +21,22 @@ if vim.g.vscode == nil then
   require'hop'.setup{}
 
   -- Nvim Tree Navigation
-  require('nvim-tree').setup{}
+  require('nvim-tree').setup{
+    view = {
+      adaptive_size = true,
+      mappings = {
+        list = {
+          { key = "u", action = "dir_up" },
+          { key = "<C-e>", action = "" },
+        },
+      },
+    },
+  }
 
   -- Nice bottom line
   require('lualine').setup {
     options = {
-      theme = 'kanagawa'
+      theme = 'horizon'
     }
   }
 
@@ -63,6 +81,10 @@ if vim.g.vscode == nil then
             luasnip.lsp_expand(args.body)
         end,
     },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentations = cmp.config.window.bordered(),
+    }
   }
 
 

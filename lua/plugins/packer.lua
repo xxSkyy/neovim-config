@@ -3,26 +3,21 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
-  -- Completion && Lsp
-  use {
-    "hrsh7th/nvim-cmp",
-    -- config = function() require('config.cmp') end
-  }
-
-  use "hrsh7th/cmp-nvim-lsp"
-  use "saadparwaiz1/cmp_luasnip"
-
   use 'neovim/nvim-lspconfig'
   use "lukas-reineke/lsp-format.nvim"
+
+  -- Completion 
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-path"
+  use "saadparwaiz1/cmp_luasnip"
+
 
   -- Snippets engine
   use {
     "L3MON4D3/LuaSnip",
     tag = "v1.1.*",
-    -- branch = "ls_snippets_preserve",
     after = "nvim-cmp",
-    -- config = function() require('config.snippets') end
   }
 
   -- filesystem navigation & icons
@@ -40,10 +35,7 @@ require('packer').startup(function(use)
   -- [[ Theme ]]
   -- start screen
   use { 'mhinz/vim-startify' }
-
-  -- cursor jump
-  use { 'DanilaMihailov/beacon.nvim' }
-
+  
   -- statusline
   use {
     'nvim-lualine/lualine.nvim',
@@ -58,8 +50,7 @@ require('packer').startup(function(use)
   }
 
   -- colorscheme
-  use 'Mofiqul/vscode.nvim'
-  use "rebelot/kanagawa.nvim"
+  use "EdenEast/nightfox.nvim"
 
   -- multi cursor
   use "mg979/vim-visual-multi"

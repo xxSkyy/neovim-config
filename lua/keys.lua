@@ -34,6 +34,10 @@ map('t', '<C-l>', '<C-\\><C-N><C-w>l', {})
 -- Open floating inline error
 map("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true })
 
+-- Show types etc of selected code part
+map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true })
+
+
 -- Lsp rename
 map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
 
@@ -48,10 +52,11 @@ map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
 if vim.g.vscode == nil then
 
 -- Toggle nvim-tree
-map('n', 't', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
+map('n', '<C-E>', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
 
 -- Search for files easily
 map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
+map('n', '<C-L>', [[:Telescope live_grep<CR>]], {})
 
 -- Code Formatting
 map('n', '<C-F>', [[:Prettier<CR>]],{})
