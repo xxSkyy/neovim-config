@@ -107,9 +107,6 @@ require('packer').startup(function(use)
   -- Godot
   use "habamax/vim-godot"
 
-  -- Practice vim
-  use "ThePrimeagen/vim-be-good"
-
   -- Multiple terminals, floating etc
   use {
     "akinsho/toggleterm.nvim", tag = '*', config = function()
