@@ -51,23 +51,23 @@ map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
 -- If it's not under VSCode add those mappings
 if vim.g.vscode == nil then
 
--- Toggle nvim-tree
-map('n', '<C-E>', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
+  -- Toggle nvim-tree
+  map('n', '<C-E>', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
 
--- Search for files easily
-map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
-map('n', '<C-G>', [[:Telescope live_grep<CR>]], {})
+  -- Search for files easily
+  map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
+  map('n', '<C-G>', [[:Telescope live_grep<CR>]], {})
 
--- Code Formatting
-map('n', '<C-F>', [[:Prettier<CR>]],{})
+  -- Code Formatting
+  map('n', '<C-F>', [[:Prettier<CR>]], {})
 
--- Jump to selected word
-map('n', '<C-y>', [[:HopWord<CR>]],{})
+  -- Jump to selected word
+  map('n', '<C-y>', [[:HopWord<CR>]], {})
 
--- Switch between tabs
-map('n', 'gt', '[[:BufferNext<CR>]]', {})
-map('n', 'gT', '[[:BufferPrevious<CR>]]', {})
+  -- Switch between tabs
+  map('n', 'gt', '[[:BufferNext<CR>]]', {})
+  map('n', 'gT', '[[:BufferPrevious<CR>]]', {})
 
--- Git Diff view
-map('n', 'gd', '[[:DiffviewOpen<CR>]]', {})
+  -- Git Diff view
+  map('n', 'gd', '[[:DiffviewOpen<CR>]]', {})
 end

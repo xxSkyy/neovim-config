@@ -28,7 +28,7 @@ vim.cmd([[colorscheme duskfox]])
 -- If Nvim is not running under VSCode  enable those extensions
 if vim.g.vscode == nil then
   -- Jumping over code
-  require'hop'.setup{}
+  require 'hop'.setup {}
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -41,7 +41,7 @@ if vim.g.vscode == nil then
   }
 
   -- Nvim Tree Navigation
-  require('nvim-tree').setup{
+  require('nvim-tree').setup {
     view = {
       adaptive_size = true,
       mappings = {
@@ -61,18 +61,18 @@ if vim.g.vscode == nil then
   }
 
   -- Autocompletion
-  local cmp = require'cmp'
+  local cmp = require 'cmp'
 
   if not cmp then return end
 
   cmp.setup {
     sources = {
-      {name = 'crates'},
-      {name = 'rust-analyzer'},
-      {name = 'nvim_lsp'},
-      {kjname = 'buffer'},
-      {name = 'path'},
-      {name = "luasnip"},
+      { name = 'crates' },
+      { name = 'rust-analyzer' },
+      { name = 'nvim_lsp' },
+      { kjname = 'buffer' },
+      { name = 'path' },
+      { name = "luasnip" },
     },
     mapping = {
       ['<Tab>'] = function(fallback)
@@ -93,14 +93,11 @@ if vim.g.vscode == nil then
       ['<CR>'] = cmp.mapping.confirm({ select = true })
     },
     snippet = {
-        expand = function(args)
-            local luasnip = require("luasnip")
-            if not luasnip then
-                return
-            end
-            luasnip.lsp_expand(args.body)
-        end,
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
     },
+    format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50 }),
     window = {
       completion = cmp.config.window.bordered(),
       documentations = cmp.config.window.bordered(),
@@ -148,6 +145,32 @@ if vim.g.vscode == nil then
     use_tabs = false,
     vue_indent_script_and_style = false,
   })
+
+  require 'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+      disable = {},
+    },
+    indent = {
+      enable = true,
+      disable = {},
+    },
+    ensure_installed = {
+      "rust",
+      "toml",
+      "json",
+      "yaml",
+      "css",
+      "html",
+      "typescript",
+      "lua",
+      "dockerfile",
+      "sql"
+    },
+    autotag = {
+      enable = true,
+    },
+  }
 
   -- require("mason").setup()
   -- require("mason-lspconfig").setup()
