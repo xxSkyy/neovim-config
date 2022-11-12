@@ -1,19 +1,41 @@
 -- Packer file
 require("plugins/packer")
+local Shade = require("nightfox.lib.shade")
 
 require('nightfox').setup({
+  palettes = {
+    duskfox = {
+      black   = Shade.new("#393552", "#47407d", "#322e42"),
+      red     = Shade.new("#eb6f92", "#f083a2", "#d84f76"),
+      green   = Shade.new("#a3be8c", "#b1d196", "#8aa872"),
+      yellow  = Shade.new("#dbc074", 0.15, -0.15),
+      blue    = Shade.new("#569fba", "#65b1cd", "#4a869c"),
+      -- magenta = Shade.new("#c4a7e7", "#ccb1ed", "#a580d2"),
+      magenta = Shade.new("#9d79d6", 0.15, -0.15),
+      cyan    = Shade.new("#9ccfd8", "#a6dae3", "#7bb8c1"),
+      white   = Shade.new("#dddddf", 0.15, -0.15),
+      orange  = Shade.new("#ea9a97", "#f0a4a2", "#d6746f"),
+      pink    = Shade.new("#eb98c3", "#f0a6cc", "#d871a6"),
+
+      comment = "#817c9c",
+
+      bg0 = "#171616", -- Dark bg (status line and float)
+      bg1 = "#161615", -- Default bg
+      bg2 = "#30302F", -- Lighter bg (colorcolm folds)
+      bg3 = "#30302F", -- Lighter bg (cursor line)
+      bg4 = "#4b4673", -- Conceal, border fg
+
+      fg0 = "#d6d6d7", -- Lighter fg
+      fg1 = "#cdcecf", -- Default fg
+      fg2 = "#aeafb0", -- Darker fg (status line)
+      fg3 = "#4b4673", -- Darker fg (line numbers, fold colums)
+
+      sel0 = "#433c59", -- Popup bg, visual selection bg
+      sel1 = "#63577d", -- Popup sel bg, search bg
+    }
+  },
   options = {
     transparent = true,
-
-    palettes = {
-      duskfox = {
-        bg1 = "#161615",
-        bg0 = "#161615",
-        bg3 = "#161615",
-        sel0 = "#161615",
-      }
-    },
-
     styles = {
       comments = "italic",
       keywords = "italic",
@@ -24,14 +46,14 @@ require('nightfox').setup({
 vim.cmd([[colorscheme duskfox]])
 
 
-
--- If Nvim is not running under VSCode  enable those extensions
+-- If Nvim is not running under VSCode enable those extensions
 if vim.g.vscode == nil then
   -- Jumping over code
   require 'hop'.setup {}
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
+
   })
 
   vim.diagnostic.config {
