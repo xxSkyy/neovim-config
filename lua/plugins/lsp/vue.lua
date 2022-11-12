@@ -25,7 +25,7 @@ end
 
 require'lspconfig'.volar.setup{
   root_dir = require'lspconfig'.util.root_pattern("package.json"),
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json', 'tsx'},
+  filetypes = {'vue'},
 
   on_new_config = function(new_config, new_root_dir)
     new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)

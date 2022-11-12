@@ -1,10 +1,18 @@
 -- Packer file
 require("plugins/packer")
 
--- Color scheme
 require('nightfox').setup({
   options = {
     transparent = true,
+
+    palettes = {
+      duskfox = {
+        bg1 = "#161615",
+        bg0 = "#161615",
+        bg3 = "#161615",
+        sel0 = "#161615",
+      }
+    },
 
     styles = {
       comments = "italic",
@@ -13,12 +21,24 @@ require('nightfox').setup({
     }
   }
 })
-vim.cmd([[colorscheme nightfox]])
+vim.cmd([[colorscheme duskfox]])
+
+
 
 -- If Nvim is not running under VSCode  enable those extensions
 if vim.g.vscode == nil then
   -- Jumping over code
   require'hop'.setup{}
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vim.diagnostic.config {
+    float = {
+      border = "rounded",
+    }
+  }
 
   -- Nvim Tree Navigation
   require('nvim-tree').setup{
@@ -50,7 +70,7 @@ if vim.g.vscode == nil then
       {name = 'crates'},
       {name = 'rust-analyzer'},
       {name = 'nvim_lsp'},
-      {name = 'buffer'},
+      {kjname = 'buffer'},
       {name = 'path'},
       {name = "luasnip"},
     },

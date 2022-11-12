@@ -6,12 +6,11 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use "lukas-reineke/lsp-format.nvim"
 
-  -- Completion 
+  -- Completion
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-path"
   use "saadparwaiz1/cmp_luasnip"
-
 
   -- Snippets engine
   use {
@@ -35,7 +34,7 @@ require('packer').startup(function(use)
   -- [[ Theme ]]
   -- start screen
   use { 'mhinz/vim-startify' }
-  
+
   -- statusline
   use {
     'nvim-lualine/lualine.nvim',

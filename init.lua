@@ -13,9 +13,3 @@ require('keys')      -- Keymaps
 
 require('tweaks/clipboard')
 require('plugins/plugins')      -- Plugins
-
-
-
-
-
-
