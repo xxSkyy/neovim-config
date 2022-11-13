@@ -123,6 +123,8 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Colorize hex color
+  use 'norcalli/nvim-colorizer.lua'
 
   -- Show matching words
   use "RRethy/vim-illuminate"

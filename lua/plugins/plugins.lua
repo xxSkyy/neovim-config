@@ -194,6 +194,14 @@ if vim.g.vscode == nil then
     },
   }
 
+  require 'colorizer'.setup {
+    filetypes = { "*" },
+    user_default_options = {
+      tailwind = true,
+      virtualtext = "■",
+    },
+  }
+
   -- require("mason").setup()
   -- require("mason-lspconfig").setup()
   --
@@ -203,7 +211,7 @@ if vim.g.vscode == nil then
   require("plugins/lsp/deno")
   require("plugins/lsp/godot")
   require("plugins/lsp/rust")
-  require("plugins/lsp/typescript")
+  -- require("plugins/lsp/typescript")
   require("plugins/lsp/vue")
   require("plugins/lsp/tailwind")
 end
