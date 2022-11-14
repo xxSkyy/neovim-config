@@ -124,7 +124,7 @@ require('packer').startup(function(use)
   }
 
   -- Colorize hex color
-  use 'norcalli/nvim-colorizer.lua'
+  use 'NvChad/nvim-colorizer.lua'
 
   -- Show matching words
   use "RRethy/vim-illuminate"
@@ -145,7 +145,9 @@ require('packer').startup(function(use)
   -- Auto pairs plugin
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
   }
 
   -- UI Installer
@@ -160,15 +162,13 @@ require('packer').startup(function(use)
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      -- vim.opt.list = true
-      -- vim.opt.listchars:append "eol:↴"
       require("indent_blankline").setup {
         show_end_of_line = true,
       }
     end
   }
 
-  -- another commenting
+  -- Another commenting
   use {
     "JoosepAlviste/nvim-ts-context-commentstring",
     config = function()
@@ -272,6 +272,5 @@ require('packer').startup(function(use)
       }
     end
   }
-
 
 end)

@@ -119,7 +119,9 @@ if vim.g.vscode == nil then
         require("luasnip").lsp_expand(args.body)
       end,
     },
-    format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50 }),
+    formatting = {
+      format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50, mode = 'symbol', ellipsis_char = '...' }),
+    },
     window = {
       completion = cmp.config.window.bordered(),
       documentations = cmp.config.window.bordered(),
@@ -198,12 +200,11 @@ if vim.g.vscode == nil then
     filetypes = { "*" },
     user_default_options = {
       tailwind = true,
-      virtualtext = "■",
     },
   }
 
-  -- require("mason").setup()
-  -- require("mason-lspconfig").setup()
+  require("mason").setup()
+  require("mason-lspconfig").setup()
   --
 
   -- Lsp configs only pure nvim
@@ -212,6 +213,6 @@ if vim.g.vscode == nil then
   require("plugins/lsp/godot")
   require("plugins/lsp/rust")
   -- require("plugins/lsp/typescript")
-  require("plugins/lsp/vue")
   require("plugins/lsp/tailwind")
+  require("plugins/lsp/vue")
 end

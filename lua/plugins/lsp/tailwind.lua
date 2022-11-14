@@ -1,4 +1,25 @@
 require 'lspconfig'.tailwindcss.setup {
-  -- on_attach = require("lsp-format").on_attach,
-  root_dir = require 'lspconfig'.util.root_pattern("tailwind.config.js", "windi.config.ts"),
+  filetypes = {
+    "css",
+    "scss",
+    "sass",
+    "postcss",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte",
+    "vue",
+    "rust",
+  },
+  experimental = {
+    classRegex = {
+      [[class= "([^"]*)]],
+      [[class: "([^"]*)]],
+      '~H""".*class="([^"]*)".*"""',
+    },
+  },
+  root_dir = require 'lspconfig'.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
+    'postcss.config.ts', 'package.json', 'node_modules'),
 }
