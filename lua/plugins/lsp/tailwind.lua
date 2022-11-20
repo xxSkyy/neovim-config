@@ -1,4 +1,5 @@
 require 'lspconfig'.tailwindcss.setup {
+  capabilities = Capabilities,
   filetypes = {
     "css",
     "scss",

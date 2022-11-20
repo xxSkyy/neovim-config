@@ -27,8 +27,12 @@ end
 require 'lspconfig'.volar.setup {
   on_attach = require("lsp-format").on_attach,
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-
+  filetypes = { 'vue' },
+  documentFeatures = {
+    documentFormatting = {
+      defaultPrintWidth = 60
+    },
+  },
   on_new_config = function(new_config, new_root_dir)
     new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
   end

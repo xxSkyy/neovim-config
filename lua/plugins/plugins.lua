@@ -220,12 +220,12 @@ if vim.g.vscode == nil then
   require("mason-lspconfig").setup()
   --
 
-  -- Lsp configs
+  -- Lsp configs only pure nvim
+  require("plugins/lsp/tailwind")
   require("plugins/lsp/lua")
   require("plugins/lsp/deno")
   require("plugins/lsp/godot")
   require("plugins/lsp/rust")
-  -- require("plugins/lsp/typescript")
-  require("plugins/lsp/tailwind")
+  require("plugins/lsp/typescript")
   require("plugins/lsp/vue")
 end
