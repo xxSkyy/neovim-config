@@ -6,6 +6,8 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use "lukas-reineke/lsp-format.nvim"
 
+  use "rcarriga/nvim-notify"
+
   -- Completion
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -141,5 +143,8 @@ require('packer').startup(function(use)
     requires = 'nvim-lua/plenary.nvim',
   }
 
-  use "jose-elias-alvares/null-ls.nvim"
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
 end)
