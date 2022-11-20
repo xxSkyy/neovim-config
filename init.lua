@@ -27,4 +27,4 @@ end
 require('vars') -- Variables
 require('opts') -- Options
 require('plugins') -- Pluginm
-require('keys') -- Keymaps
+require('mappings') -- Keymaps
