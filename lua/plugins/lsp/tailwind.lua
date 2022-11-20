@@ -15,8 +15,7 @@ require 'lspconfig'.tailwindcss.setup {
   },
   experimental = {
     classRegex = {
-      [[class= "([^"]*)]],
-      [[class: "([^"]*)]],
+      [[class="([^"]*)]],
       '~H""".*class="([^"]*)".*"""',
     },
   },

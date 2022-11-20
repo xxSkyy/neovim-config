@@ -1,66 +1,36 @@
 -- Packer file
 require("plugins/packer")
-local Shade = require("nightfox.lib.shade")
-
-require('nightfox').setup({
-  palettes = {
-    duskfox = {
-      black   = Shade.new("#393552", "#47407d", "#322e42"),
-      red     = Shade.new("#eb6f92", "#f083a2", "#d84f76"),
-      green   = Shade.new("#a3be8c", "#b1d196", "#8aa872"),
-      yellow  = Shade.new("#dbc074", 0.15, -0.15),
-      blue    = Shade.new("#569fba", "#65b1cd", "#4a869c"),
-      -- magenta = Shade.new("#c4a7e7", "#ccb1ed", "#a580d2"),
-      magenta = Shade.new("#9d79d6", 0.15, -0.15),
-      cyan    = Shade.new("#9ccfd8", "#a6dae3", "#7bb8c1"),
-      white   = Shade.new("#dddddf", 0.15, -0.15),
-      orange  = Shade.new("#ea9a97", "#f0a4a2", "#d6746f"),
-      pink    = Shade.new("#eb98c3", "#f0a6cc", "#d871a6"),
-
-      comment = "#817c9c",
-
-      bg0 = "#171616", -- Dark bg (status line and float)
-      bg1 = "#161615", -- Default bg
-      bg2 = "#30302F", -- Lighter bg (colorcolm folds)
-      bg3 = "#30302F", -- Lighter bg (cursor line)
-      bg4 = "#4b4673", -- Conceal, border fg
-
-      fg0 = "#d6d6d7", -- Lighter fg
-      fg1 = "#cdcecf", -- Default fg
-      fg2 = "#aeafb0", -- Darker fg (status line)
-      fg3 = "#4b4673", -- Darker fg (line numbers, fold colums)
-
-      sel0 = "#433c59", -- Popup bg, visual selection bg
-      sel1 = "#63577d", -- Popup sel bg, search bg
-    }
-  },
-  options = {
-    transparent = true,
-    styles = {
-      comments = "italic",
-      keywords = "italic",
-      types = "italic,bold",
-    }
-  }
-})
-vim.cmd([[colorscheme duskfox]])
-
+require("plugins/theme")
 
 -- If Nvim is not running under VSCode enable those extensions
 if vim.g.vscode == nil then
   -- Jumping over code
   require 'hop'.setup {}
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+  -- Show key combinations hints
+  require 'which-key'.setup {}
 
-  })
+  require "nvim-autopairs".setup {}
 
-  vim.diagnostic.config {
-    float = {
-      border = "rounded",
+  require "indent_blankline".setup {
+    show_end_of_line = true,
+  }
+
+  require 'nvim-treesitter.configs'.setup {
+    context_commentstring = {
+      enable = true
     }
   }
+
+  require("toggleterm").setup()
+
+  require('crates').setup()
+
+  require("nvim-ts-autotag").setup()
+
+  require 'gitsigns'.setup()
+
+  require("trouble").setup {}
 
   -- Nvim Tree Navigation
   require('nvim-tree').setup {
@@ -84,8 +54,6 @@ if vim.g.vscode == nil then
 
   -- Autocompletion
   local cmp = require 'cmp'
-
-  if not cmp then return end
 
   cmp.setup {
     sources = {
@@ -128,48 +96,6 @@ if vim.g.vscode == nil then
     }
   }
 
-
-  -- Prettier
-  require("prettier").setup({
-    bin = 'prettier', -- or `prettierd`
-    -- filetypes = {
-    --   "css",
-    --   "graphql",
-    --   "html",
-    --   "javascript",
-    --   "javascriptreact",
-    --   "json",
-    --   "less",
-    --   "markdown",
-    --   "scss",
-    --   "typescript",
-    --   "typescriptreact",
-    --   "yaml",
-    --   "vue",
-    --   "rs",
-    --   "rust",
-    --   "lua"
-    -- },
-
-    -- prettier format options (you can use config files too. ex: `.prettierrc`)
-    arrow_parens = "always",
-    bracket_spacing = true,
-    embedded_language_formatting = "auto",
-    end_of_line = "lf",
-    html_whitespace_sensitivity = "css",
-    jsx_bracket_same_line = false,
-    jsx_single_quote = false,
-    print_width = 60,
-    prose_wrap = "preserve",
-    quote_props = "as-needed",
-    semi = false,
-    single_quote = false,
-    tab_width = 2,
-    trailing_comma = "es5",
-    use_tabs = false,
-    vue_indent_script_and_style = false,
-  })
-
   require 'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -203,11 +129,98 @@ if vim.g.vscode == nil then
     },
   }
 
+
+  local diffview_actions = require("diffview.actions")
+
+  require 'diffview'.setup {
+    keymaps = {
+      disable_defaults = false, -- Disable the default keymaps
+      view = {
+        -- The `view` bindings are active in the diff buffers, only when the current
+        -- tabpage is a Diffview.
+        ["<tab>"]      = diffview_actions.select_next_entry, -- Open the diff for the next file
+        ["<s-tab>"]    = diffview_actions.select_prev_entry, -- Open the diff for the previous file
+        ["gf"]         = diffview_actions.goto_file, -- Open the file in a new split in the previous tabpage
+        ["<C-w><C-f>"] = diffview_actions.goto_file_split, -- Open the file in a new split
+        ["<C-w>gf"]    = diffview_actions.goto_file_tab, -- Open the file in a new tabpage
+        ["<leader>e"]  = diffview_actions.focus_files, -- Bring focus to the file panel
+        ["<leader>b"]  = diffview_actions.toggle_files, -- Toggle the file panel.
+        ["[x"]         = diffview_actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
+        ["]x"]         = diffview_actions.next_conflict, -- In the merge_tool: jump to the next conflict
+        ["<leader>co"] = diffview_actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
+        ["<leader>ct"] = diffview_actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
+        ["<leader>cb"] = diffview_actions.conflict_choose("base"), -- Choose the BASE version of a conflict
+        ["<leader>ca"] = diffview_actions.conflict_choose("all"), -- Choose all the versions of a conflict
+        ["dx"]         = diffview_actions.conflict_choose("none"), -- Delete the conflict region
+      },
+      diff1 = { --[[ Mappings in single window diff layouts ]] },
+      diff2 = { --[[ Mappings in 2-way diff layouts ]] },
+      diff3 = {
+        -- Mappings in 3-way diff layouts
+        { { "n", "x" }, "2do", diffview_actions.diffget("ours") }, -- Obtain the diff hunk from the OURS version of the file
+        { { "n", "x" }, "3do", diffview_actions.diffget("theirs") }, -- Obtain the diff hunk from the THEIRS version of the file
+      },
+      diff4 = {
+        -- Mappings in 4-way diff layouts
+        { { "n", "x" }, "1do", diffview_actions.diffget("base") }, -- Obtain the diff hunk from the BASE version of the file
+        { { "n", "x" }, "2do", diffview_actions.diffget("ours") }, -- Obtain the diff hunk from the OURS version of the file
+        { { "n", "x" }, "3do", diffview_actions.diffget("theirs") }, -- Obtain the diff hunk from the THEIRS version of the file
+      },
+      file_panel = {
+        ["j"]          = diffview_actions.next_entry, -- Bring the cursor to the next file entry
+        ["k"]          = diffview_actions.prev_entry, -- Bring the cursor to the previous file entry.
+        ["<cr>"]       = diffview_actions.select_entry, -- Open the diff for the selected entry.
+        ["-"]          = diffview_actions.toggle_stage_entry, -- Stage / unstage the selected entry.
+        ["S"]          = diffview_actions.stage_all, -- Stage all entries.
+        ["U"]          = diffview_actions.unstage_all, -- Unstage all entries.
+        ["X"]          = diffview_actions.restore_entry, -- Restore entry to the state on the left side.
+        ["L"]          = diffview_actions.open_commit_log, -- Open the commit log panel.
+        ["<tab>"]      = diffview_actions.select_next_entry,
+        ["<s-tab>"]    = diffview_actions.select_prev_entry,
+        ["gf"]         = diffview_actions.goto_file,
+        ["<C-w><C-f>"] = diffview_actions.goto_file_split,
+        ["<C-w>gf"]    = diffview_actions.goto_file_tab,
+        ["i"]          = diffview_actions.listing_style, -- Toggle between 'list' and 'tree' views
+        ["R"]          = diffview_actions.refresh_files, -- Update stats and entries in the file list.
+        ["<leader>e"]  = diffview_actions.focus_files,
+        ["<leader>b"]  = diffview_actions.toggle_files,
+        ["[x"]         = diffview_actions.prev_conflict,
+        ["]x"]         = diffview_actions.next_conflict,
+      },
+      file_history_panel = {
+        ["g!"]            = diffview_actions.options, -- Open the option panel
+        ["<C-A-d>"]       = diffview_actions.open_in_diffview, -- Open the entry under the cursor in a diffview
+        ["y"]             = diffview_actions.copy_hash, -- Copy the commit hash of the entry under the cursor
+        ["L"]             = diffview_actions.open_commit_log,
+        ["zR"]            = diffview_actions.open_all_folds,
+        ["zM"]            = diffview_actions.close_all_folds,
+        ["j"]             = diffview_actions.next_entry,
+        ["k"]             = diffview_actions.prev_entry,
+        ["<cr>"]          = diffview_actions.select_entry,
+        ["o"]             = diffview_actions.select_entry,
+        ["<2-LeftMouse>"] = diffview_actions.select_entry,
+        ["<c-b>"]         = diffview_actions.scroll_view(-0.25),
+        ["<c-f>"]         = diffview_actions.scroll_view(0.25),
+        ["<tab>"]         = diffview_actions.select_next_entry,
+        ["<s-tab>"]       = diffview_actions.select_prev_entry,
+        ["gf"]            = diffview_actions.goto_file,
+        ["<C-w><C-f>"]    = diffview_actions.goto_file_split,
+        ["<C-w>gf"]       = diffview_actions.goto_file_tab,
+        ["<leader>e"]     = diffview_actions.focus_files,
+        ["<leader>b"]     = diffview_actions.toggle_files,
+      },
+      option_panel = {
+        ["<tab>"] = diffview_actions.select_entry,
+        ["q"]     = diffview_actions.close,
+      },
+    },
+  }
+
   require("mason").setup()
   require("mason-lspconfig").setup()
   --
 
-  -- Lsp configs only pure nvim
+  -- Lsp configs
   require("plugins/lsp/lua")
   require("plugins/lsp/deno")
   require("plugins/lsp/godot")

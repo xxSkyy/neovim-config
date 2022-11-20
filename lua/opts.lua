@@ -2,7 +2,6 @@
 local opt = vim.opt
 local cmd = vim.api.nvim_command
 
--- [[ Plugins Go Here ]]
 -- [[ Context ]]
 opt.colorcolumn = '60' -- str:  Show col for max line length
 opt.number = true -- bool: Show line numbers
@@ -22,7 +21,6 @@ vim.g.vscode_italic_comment = 1
 vim.g.vscode_disable_nvimtree_bg = true
 vim.g.vscode_style = "dark"
 
-
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns
 opt.smartcase = true -- bool: Override ignorecase if search contains capitals
@@ -38,3 +36,19 @@ opt.tabstop = 2 -- num:  Number of spaces tabs count for
 -- [[ Splits ]]
 opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window below the current one
+
+-- Use system clipboard
+opt.clipboard = 'unnamedplus'
+
+-- Set borders for hover
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+
+})
+
+-- Set borders for diagnostics
+vim.diagnostic.config {
+  float = {
+    border = "rounded",
+  }
+}

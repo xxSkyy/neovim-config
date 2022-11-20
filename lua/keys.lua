@@ -1,8 +1,6 @@
 --[[ keys.lua ]]
 local map = vim.api.nvim_set_keymap
 
-
-
 -- remap the key used to leave insert mode
 map('i', 'jk', '', {})
 
@@ -17,13 +15,6 @@ map('n', '<Up>', '<Nop>', {})
 map('n', '<Down>', '<Nop>', {})
 map('n', '<Left>', '<Nop>', {})
 map('n', '<Right>', '<Nop>', {})
-
--- In input mode also, no more
--- Update: It was stupid
--- map('i', '<Up>', '<Nop>', {})
--- map('i', '<Down>', '<Nop>', {})
--- map('i', '<Left>', '<Nop>', {})
--- map('i', '<Right>', '<Nop>', {})
 
 -- Terminal mappings out of console
 map('t', '<C-h>', '<C-\\><C-N><C-w>h', {})
@@ -52,14 +43,14 @@ map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
 if vim.g.vscode == nil then
 
   -- Toggle nvim-tree
-  map('n', '<C-E>', [[:NvimTreeToggle<CR>:NvimTreeRefresh<CR>]], {})
+  map('n', '<C-E>', [[:NvimTreeFindFileToggle<CR>:NvimTreeRefresh<CR>]], {})
 
   -- Search for files easily
   map('n', '<C-P>', [[:Telescope find_files<CR>]], {})
   map('n', '<C-G>', [[:Telescope live_grep<CR>]], {})
 
   -- Code Formatting
-  map('n', '<C-F>', [[:Prettier<CR>]], {})
+  -- map('n', '<C-F>', [[:Prettier<CR>]], {})
 
   -- Jump to selected word
   map('n', '<C-y>', [[:HopWord<CR>]], {})

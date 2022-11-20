@@ -6,7 +6,10 @@
 vim.g.mapleader = ","
 vim.g.localleader = "\\"
 
-Capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local has_cmp_nvim_lsp = pcall(require, "vmp_nvim_lsp")
+if has_cmp_nvim_lsp then
+  Capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
 
 
 -- IMPORTS
@@ -14,5 +17,4 @@ require('vars') -- Variables
 require('opts') -- Options
 require('keys') -- Keymaps
 
-require('tweaks/clipboard')
 require('plugins/plugins') -- Plugins
