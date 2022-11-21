@@ -26,6 +26,7 @@ end
 
 require 'lspconfig'.volar.setup {
   on_attach = require("lsp-format").on_attach,
+  capabilities = Capabilities,
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
   filetypes = { 'vue' },
   documentFeatures = {
