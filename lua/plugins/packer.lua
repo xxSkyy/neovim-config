@@ -98,6 +98,7 @@ require('packer').startup(function(use)
     tag = 'v0.2.1',
     requires = { 'nvim-lua/plenary.nvim' },
   }
+  use 'simrat39/rust-tools.nvim'
 
   -- Godot
   use "habamax/vim-godot"

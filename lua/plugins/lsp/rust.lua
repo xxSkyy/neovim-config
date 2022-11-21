@@ -2,7 +2,7 @@
 require('crates').setup()
 
 -- rust analuzer
-require 'lspconfig'.rust_analyzer.setup({
+local server = {
   on_attach = require("lsp-format").on_attach,
   capabilities = Capabilities,
   settings = {
@@ -20,5 +20,21 @@ require 'lspconfig'.rust_analyzer.setup({
         command = "clippy"
       },
     }
+  }
+}
+
+local rt = require("rust-tools")
+rt.setup({
+  server = server,
+  tools = {
+    runnables = {
+      use_telescope = true,
+    },
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
   }
 })
