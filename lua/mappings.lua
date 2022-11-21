@@ -6,7 +6,8 @@ local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
 maps[""]["<Space>"] = "<Nop>"
 
 maps.i = {
-  ['jk'] = { '' }
+  ['jk'] = { '' },
+  ['<S-Tab>'] = { '<C-d>' }
 }
 
 maps.n = {
