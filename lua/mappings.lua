@@ -80,7 +80,7 @@ if vim.g.vscode == nil then
   maps.n["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", noremap = true, desc = "Hover" }
   maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree" }
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
-  maps.n["<C-g>"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
+  maps.n["<C-g>"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc = "Live grep" }
   maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
 
   -- LSP Installer

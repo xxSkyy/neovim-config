@@ -3,7 +3,6 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-
     prompt_prefix = string.format("%s ", neovim.get_icon "Search"),
     selection_caret = string.format("%s ", neovim.get_icon "Selected"),
     path_display = { "truncate" },
@@ -33,3 +32,5 @@ telescope.setup {
     },
   },
 }
+
+telescope.load_extension("live_grep_args")
