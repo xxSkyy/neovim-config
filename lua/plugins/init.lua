@@ -65,6 +65,7 @@ if vim.g.vscode == nil then
     on_attach = require("lsp-format").on_attach,
     sources = {
       null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.diagnostics.eslint,
       -- null_ls.builtins.completion.spell,
     },
