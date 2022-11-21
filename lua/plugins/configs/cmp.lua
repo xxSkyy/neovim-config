@@ -2,11 +2,18 @@
 local cmp = require 'cmp'
 
 cmp.setup {
+  source_priority = {
+    nvim_lsp = 1000,
+    luasnip = 750,
+    buffer = 500,
+    path = 250,
+    text = 10,
+  },
   sources = {
     { name = 'crates' },
     { name = 'rust-analyzer' },
     { name = 'nvim_lsp' },
-    { kjname = 'buffer' },
+    { name = 'buffer' },
     { name = 'path' },
     { name = "luasnip" },
   },
@@ -34,8 +41,16 @@ cmp.setup {
     end,
   },
   formatting = {
-    format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50, mode = 'symbol', ellipsis_char = '...' }),
+    format = function(_, vim_item)
+      vim_item.kind = require("lspkind").presets.codicons[vim_item.kind]
+          .. "  "
+          .. vim_item.kind
+      return vim_item
+    end,
   },
+  -- formatting = {
+  -- format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50, mode = 'symbol', ellipsis_char = '...' }),
+  -- },
   window = {
     completion = cmp.config.window.bordered(),
     documentations = cmp.config.window.bordered(),
