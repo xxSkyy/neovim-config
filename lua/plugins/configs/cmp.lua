@@ -1,5 +1,6 @@
 -- Autocompletion
 local cmp = require 'cmp'
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 cmp.setup {
   source_priority = {
@@ -56,3 +57,8 @@ cmp.setup {
     documentations = cmp.config.window.bordered(),
   }
 }
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)

@@ -19,6 +19,9 @@ require 'nvim-treesitter.configs'.setup {
     "dockerfile",
     "sql"
   },
+  endwise = {
+    enable = true,
+  },
   autotag = {
     enable = true,
     filetypes = {

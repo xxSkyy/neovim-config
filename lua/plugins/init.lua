@@ -10,7 +10,23 @@ if vim.g.vscode == nil then
   -- Show key combinations hints
   require 'which-key'.setup {}
 
-  require "nvim-autopairs".setup {}
+  require "nvim-autopairs".setup {
+    fast_wrap = {
+      map = '<C-a>',
+      chars = { '{', '[', '(', '"', "'" },
+      pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+      end_key = '$',
+      keys = 'qwertyuiopzxcvbnmasdfghjkl',
+      check_comma = true,
+      highlight = 'Search',
+      highlight_grey = 'Comment'
+    },
+  }
+  local Rule = require('nvim-autopairs.rule')
+  require 'nvim-autopairs'.add_rules {
+    Rule('|', '|', 'rust'),
+    Rule('<', '>', 'rust')
+  }
 
   require "indent_blankline".setup {
     show_end_of_line = true,
