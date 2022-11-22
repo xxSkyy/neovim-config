@@ -16,7 +16,8 @@ require('nightfox').setup({
 
       comment = "#817c9c",
 
-      bg0 = "#171616", -- Dark bg (status line and float)
+      bg0 = "#2e303f", -- Dark bg (status line and float)
+      -- bg0 = "#171616", -- Dark bg (status line and float)
       bg1 = "#161615", -- Default bg
       bg2 = "#30302F", -- Lighter bg (colorcolm folds)
       bg3 = "#30302F", -- Lighter bg (cursor line)
