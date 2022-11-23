@@ -48,6 +48,8 @@ if vim.g.vscode == nil then
 
   require("trouble").setup {}
 
+  require("plugins.configs.dap")
+  require("dapui").setup()
   -- Nice bottom line
   --
   local custom_horizon = require 'lualine.themes.horizon'

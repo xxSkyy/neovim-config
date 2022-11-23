@@ -55,6 +55,11 @@ if vim.g.vscode == nil then
   maps.n["<b"] = { "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer tab left" }
 
 
+  -- Dapui
+  maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
+  maps.n["<leader>Dc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
+  maps.n["<leader>Dt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
+
 
   maps.n["<leader>gdv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
   maps.n["<leader>gdc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }

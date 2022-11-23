@@ -134,6 +134,7 @@ require('packer').startup(function(use)
 
   -- Debug Adapter Protocol
   use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
 
   -- Show indentation etc
   use "lukas-reineke/indent-blankline.nvim"
