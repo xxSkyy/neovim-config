@@ -27,8 +27,8 @@ end
 require 'lspconfig'.volar.setup {
   on_attach = require("lsp-format").on_attach,
   capabilities = Capabilities,
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
-  filetypes = { 'vue' },
   documentFeatures = {
     documentFormatting = {
       defaultPrintWidth = 60

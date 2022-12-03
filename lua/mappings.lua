@@ -16,7 +16,8 @@ maps.n = {
   ['<Down>'] = { '<Nop>' },
   ['<Left>'] = { '<Nop>' },
   ['<Right>'] = { '<Nop>' },
-
+  ['<C-d>'] = { "<C-d>zz" },
+  ['<C-u>'] = { "<C-u>zz" },
 }
 
 
@@ -61,8 +62,8 @@ if vim.g.vscode == nil then
   maps.n["<leader>Dt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
 
 
-  maps.n["<leader>gdv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
-  maps.n["<leader>gdc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
+  maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
+  maps.n["<leader>dc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
 
 
   -- GitSigns
