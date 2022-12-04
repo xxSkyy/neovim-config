@@ -10,7 +10,7 @@ local rt = require("rust-tools")
 -- rust analuzer
 local server = {
   on_attach    = function(client, bufnr)
-    -- ih.on_attach(client, bufnr)
+    require("lsp-format").on_attach(client)
     vim.keymap.set(
       "n",
       "K",
