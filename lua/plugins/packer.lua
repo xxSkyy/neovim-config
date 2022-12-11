@@ -42,6 +42,12 @@ require('packer').startup(function(use)
     }
   }
 
+  -- Window picker
+  use {
+    's1n7ax/nvim-window-picker',
+    tag = 'v1.*',
+  }
+
   -- Tree
   use {
     "nvim-neo-tree/neo-tree.nvim",
