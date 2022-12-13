@@ -43,10 +43,30 @@ require('neo-tree').setup({
     },
   },
   filesystem = {
+    commands = {
+      copy_file_name = function(state)
+        local node = state.tree:get_node()
+        print(node.name)
+        vim.fn.setreg('+', node.name)
+      end
+    },
     follow_current_file = true,
     hijack_netrw_behavior = "open_current",
     use_libuv_file_watcher = true,
-    window = { mappings = { h = "toggle_hidden" } },
+    window = { mappings = {
+      h = "toggle_hidden",
+      ["Y"] = function(state)
+        local node = state.tree:get_node()
+        vim.fn.setreg('+', node.name)
+      end,
+      ["<C-y>"] = function(state)
+        local node = state.tree:get_node()
+        local full_path = node.path
+        local relative_path = full_path:sub(#state.path + 2)
+        vim.fn.setreg('+', relative_path)
+      end,
+    }
+    },
   },
   event_handlers = {
     { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },

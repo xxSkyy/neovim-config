@@ -13,6 +13,7 @@ require("bufferline").setup({
       { filetype = "neo-tree", text = "", padding = 1 },
       { filetype = "Outline", text = "", padding = 1 },
     },
+    -- mode = "tabs",
     buffer_close_icon = neovim.get_icon "BufferClose",
     modified_icon = neovim.get_icon "FileModified",
     close_icon = neovim.get_icon "NeovimClose",
@@ -24,4 +25,3 @@ require("bufferline").setup({
     separator_style = "thin",
   },
 })
-

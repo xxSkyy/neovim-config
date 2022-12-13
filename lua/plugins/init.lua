@@ -10,6 +10,8 @@ if vim.g.vscode == nil then
   -- Show key combinations hints
   require 'which-key'.setup {}
 
+  require("scope").setup()
+
   require "nvim-autopairs".setup {
     fast_wrap = {
       map = '<C-a>',

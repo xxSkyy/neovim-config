@@ -48,6 +48,8 @@ require('packer').startup(function(use)
     tag = 'v1.*',
   }
 
+  use "tiagovla/scope.nvim"
+
   -- Tree
   use {
     "nvim-neo-tree/neo-tree.nvim",

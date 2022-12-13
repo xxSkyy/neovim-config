@@ -177,9 +177,6 @@ if vim.g.vscode == nil then
     maps.n["<leader>gg"] = { function() toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
     maps.n["<leader>tl"] = { function() toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
   end
-  if vim.fn.executable "node" == 1 then
-    maps.n["<leader>tn"] = { function() toggle_term_cmd "node" end, desc = "ToggleTerm node" }
-  end
   if vim.fn.executable "gdu" == 1 then
     maps.n["<leader>tu"] = { function() toggle_term_cmd "gdu" end, desc = "ToggleTerm gdu" }
   end
@@ -189,6 +186,10 @@ if vim.g.vscode == nil then
   if vim.fn.executable "python" == 1 then
     maps.n["<leader>tp"] = { function() toggle_term_cmd "python" end, desc = "ToggleTerm python" }
   end
+
+  maps.n["<leader>tn"] = { "<cmd>tabnew<cr>" }
+  maps.n["<leader>tc"] = { "<cmd>tabclose<cr>" }
+
   maps.n["<leader>tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
   maps.n["<leader>th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
   maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
