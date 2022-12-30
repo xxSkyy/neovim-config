@@ -22,12 +22,6 @@ maps.n = {
   ['N'] = { "Nzzzv" },
 }
 
-
-
-
--- Lsp rename
-maps.n["<leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", noremap = true }
-
 -- Pasting yanked not deleted n' yanked value
 maps.n[',p'] = { '"0p' }
 maps.n[',P'] = { '"0P' }
@@ -63,13 +57,12 @@ if vim.g.vscode == nil then
   maps.n["<leader>Dc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
   maps.n["<leader>Dt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
 
-
+  -- DiffView
   maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
   maps.n["<leader>dc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
 
 
   -- GitSigns
-  -- if is_available "gitsigns.nvim" then
   maps.n["<leader>gj"] = { function() require("gitsigns").next_hunk() end, desc = "Next git hunk" }
   maps.n["<leader>gk"] = { function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" }
   maps.n["<leader>gl"] = { function() require("gitsigns").blame_line() end, desc = "View git blame" }
@@ -80,22 +73,19 @@ if vim.g.vscode == nil then
   maps.n["<leader>gs"] = { function() require("gitsigns").stage_hunk() end, desc = "Stage git hunk" }
   maps.n["<leader>gu"] = { function() require("gitsigns").undo_stage_hunk() end, desc = "Unstage git hunk" }
   maps.n["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "View git diff" }
-  -- end
 
 
   maps.n["<leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", noremap = true, desc = "Open diagnostic" }
   maps.n["<leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", noremap = true, desc = "LSP Rename" }
   maps.n["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", noremap = true, desc = "Hover" }
+
   maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree" }
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
   maps.n["<C-g>"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc = "Live grep" }
   maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
 
-  -- LSP Installer
-  if is_available "mason-lspconfig.nvim" then maps.n["<leader>li"] = { "<cmd>LspInfo<cr>", desc = "LSP information" } end
-
   -- Smart Splits
-  -- if is_available "smart-splits.nvim" then
+
   -- Better window navigation
   maps.n["<C-h>"] = { function() require("smart-splits").move_cursor_left() end, desc = "Move to left split" }
   maps.n["<C-j>"] = { function() require("smart-splits").move_cursor_down() end, desc = "Move to below split" }
@@ -107,7 +97,7 @@ if vim.g.vscode == nil then
   maps.n["<C-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" }
   maps.n["<C-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
   maps.n["<C-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
-  -- else
+
   -- maps.n["<C-h>"] = { "<C-w>h", desc = "Move to left split" }
   -- maps.n["<C-j>"] = { "<C-w>j", desc = "Move to below split" }
   -- maps.n["<C-k>"] = { "<C-w>k", desc = "Move to above split" }
@@ -116,10 +106,8 @@ if vim.g.vscode == nil then
   -- maps.n["<C-Down>"] = { "<cmd>resize +2<CR>", desc = "Resize split down" }
   -- maps.n["<C-Left>"] = { "<cmd>vertical resize -2<CR>", desc = "Resize split left" }
   -- maps.n["<C-Right>"] = { "<cmd>vertical resize +2<CR>", desc = "Resize split right" }
-  -- end
 
   -- Telescope
-  -- if is_available "telescope.nvim" then
   maps.n["<leader>fw"] = { function() require("telescope.builtin").live_grep() end, desc = "Search words" }
   maps.n["<leader>fW"] = {
     function()
@@ -132,11 +120,13 @@ if vim.g.vscode == nil then
   maps.n["<leader>gt"] = { function() require("telescope.builtin").git_status() end, desc = "Git status" }
   maps.n["<leader>gb"] = { function() require("telescope.builtin").git_branches() end, desc = "Git branches" }
   maps.n["<leader>gc"] = { function() require("telescope.builtin").git_commits() end, desc = "Git commits" }
+
   maps.n["<leader>ff"] = { function() require("telescope.builtin").find_files() end, desc = "Search files" }
   maps.n["<leader>fF"] = {
     function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end,
     desc = "Search all files",
   }
+
   maps.n["<leader>fb"] = { function() require("telescope.builtin").buffers() end, desc = "Search buffers" }
   maps.n["<leader>fh"] = { function() require("telescope.builtin").help_tags() end, desc = "Search help" }
   maps.n["<leader>fm"] = { function() require("telescope.builtin").marks() end, desc = "Search marks" }
@@ -149,10 +139,7 @@ if vim.g.vscode == nil then
   maps.n["<leader>sr"] = { function() require("telescope.builtin").registers() end, desc = "Search registers" }
   maps.n["<leader>sk"] = { function() require("telescope.builtin").keymaps() end, desc = "Search keymaps" }
   maps.n["<leader>sc"] = { function() require("telescope.builtin").commands() end, desc = "Search commands" }
-  if neovim.is_available "nvim-notify" then
-    maps.n["<leader>sn"] =
-    { function() require("telescope").extensions.notify.notify() end, desc = "Search notifications" }
-  end
+
   maps.n["<leader>ls"] = {
     function()
       local aerial_avail, _ = pcall(require, "aerial")
@@ -164,28 +151,12 @@ if vim.g.vscode == nil then
     end,
     desc = "Search symbols",
   }
+
   maps.n["<leader>lG"] =
   { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
   maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end, desc = "Search references" }
   maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end, desc = "Search diagnostics" }
   -- end
-
-  -- Terminal
-  -- if is_available "toggleterm.nvim" then
-  local toggle_term_cmd = neovim.toggle_term_cmd
-  if vim.fn.executable "lazygit" == 1 then
-    maps.n["<leader>gg"] = { function() toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
-    maps.n["<leader>tl"] = { function() toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
-  end
-  if vim.fn.executable "gdu" == 1 then
-    maps.n["<leader>tu"] = { function() toggle_term_cmd "gdu" end, desc = "ToggleTerm gdu" }
-  end
-  if vim.fn.executable "btm" == 1 then
-    maps.n["<leader>tt"] = { function() toggle_term_cmd "btm" end, desc = "ToggleTerm btm" }
-  end
-  if vim.fn.executable "python" == 1 then
-    maps.n["<leader>tp"] = { function() toggle_term_cmd "python" end, desc = "ToggleTerm python" }
-  end
 
   maps.n["<leader>tn"] = { "<cmd>tabnew<cr>" }
   maps.n["<leader>tc"] = { "<cmd>tabclose<cr>" }
@@ -193,11 +164,9 @@ if vim.g.vscode == nil then
   maps.n["<leader>tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
   maps.n["<leader>th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
   maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
+
   maps.n["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
   maps.t["<F7>"] = maps.n["<F7>"]
-  maps.n["<C-'>"] = maps.n["<F7>"]
-  maps.t["<C-'>"] = maps.n["<F7>"]
-  -- end
 
 
   -- Improved Terminal Navigation
@@ -212,6 +181,15 @@ if vim.g.vscode == nil then
 
   -- Git Diff view
   -- maps.n['gd'] = { '[[:DiffviewOpen<CR>]]' }
+
+  maps.n["<leader>gj"] = { function()
+    local language = vim.fn.input("Lang > ", "typescript")
+    local top_level = vim.fn.input("Main type name > ")
+
+    vim.cmd(".!quicktype -l " .. language .. " --just-types --top-level " .. top_level)
+
+  end, desc = "Generate types from current line json" }
+
 end
 
 neovim.set_mappings(maps)
