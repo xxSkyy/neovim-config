@@ -38,3 +38,19 @@ function neovim.set_mappings(map_table, base)
 end
 
 function neovim.is_available(plugin) return packer_plugins ~= nil and packer_plugins[plugin] ~= nil end
+
+function neovim.load_folder(path)
+  for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config') .. '/lua/' .. path:gsub("%.", "/"), [[v:val =~ '\.lua$']])) do
+    require(path .. "." .. file:gsub('%.lua$', ''))
+  end
+end
+
+-- Requires only when it's not under vscode
+function neovim.require(package, --[[optional]] settings, --[[optional]] on_vscode)
+  on_vscode = on_vscode or false
+  settings = settings or {}
+
+  if vim.g.vscode == nil then
+    require(package).setup(settings)
+  end
+end

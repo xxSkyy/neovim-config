@@ -1,11 +1,11 @@
 --[[ init.lua ]]
 
+
 -- LEADER
 -- These keybindings need to be defined before the first /
 -- is called; otherwise, it will default to "\"
 vim.g.mapleader = ","
 vim.g.localleader = "\\"
-
 
 
 for _, source in ipairs {
@@ -22,8 +22,6 @@ if has_cmp_nvim_lsp then
   Capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
 
-
--- IMPORTS
 require('vars') -- Variables
 require('opts') -- Options
 require('plugins') -- Pluginm
