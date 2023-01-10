@@ -50,7 +50,7 @@ function neovim.require(package, --[[optional]] settings, --[[optional]] on_vsco
   on_vscode = on_vscode or false
   settings = settings or {}
 
-  if vim.g.vscode == nil then
+  if vim.g.vscode == nil and on_vscode == false then
     require(package).setup(settings)
   end
 end
