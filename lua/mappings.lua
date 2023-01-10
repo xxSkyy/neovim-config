@@ -25,6 +25,7 @@ maps.n = {
 -- Pasting yanked not deleted n' yanked value
 maps.n[',p'] = { '"0p' }
 maps.n[',P'] = { '"0P' }
+maps.v['<leader>p'] = { '"_dP', desc = "Paste on selection without yank" }
 
 -- Remove useless whitespaces from end of lines
 -- map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
