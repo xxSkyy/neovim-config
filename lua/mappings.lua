@@ -52,6 +52,9 @@ if not neovim.is_vscode() then
   maps.n[">b"] = { "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer tab right" }
   maps.n["<b"] = { "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer tab left" }
 
+  -- Close current buffer
+  maps.n["<leader>cc"] = { "<cmd>lua require('close_buffers').delete({type = 'this'})<CR>", noremap = true,
+    desc = "Close current buffer" }
 
   -- Dapui
   maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
