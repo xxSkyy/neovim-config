@@ -30,7 +30,7 @@ maps.n[',P'] = { '"0P' }
 -- map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
 
 -- If it's not under VSCode add those mappings
-if vim.g.vscode == nil then
+if not neovim.is_vscode() then
 
   -- Normal --
   -- Standard Operations

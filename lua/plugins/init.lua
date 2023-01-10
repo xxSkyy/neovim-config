@@ -3,7 +3,7 @@ require("plugins.packer")
 require("plugins.theme")
 
 -- If Nvim is not running under VSCode enable those extensions
-if vim.g.vscode == nil then
+if not neovim.is_vscode() then
   -- Plugin custom configs
   neovim.load_folder("plugins.configs")
 

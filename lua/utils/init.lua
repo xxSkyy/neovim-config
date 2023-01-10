@@ -45,12 +45,14 @@ function neovim.load_folder(path)
   end
 end
 
+function neovim.is_vscode() return vim.g.vscode ~= nil end
+
 -- Requires only when it's not under vscode
 function neovim.require(package, --[[optional]] settings, --[[optional]] on_vscode)
   on_vscode = on_vscode or false
   settings = settings or {}
 
-  if vim.g.vscode == nil and on_vscode == false then
+  if not neovim.is_vscode() and on_vscode == false then
     require(package).setup(settings)
   end
 end
