@@ -104,6 +104,7 @@ require('packer').startup(function(use)
 
   -- tabs
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+  -- Close current buffer
   use { 'kazhala/close-buffers.nvim',
     config = function()
       neovim.require(
@@ -201,7 +202,15 @@ require('packer').startup(function(use)
   use 'NvChad/nvim-colorizer.lua'
 
   -- Show matching words
-  use "RRethy/vim-illuminate"
+  use { "RRethy/vim-illuminate",
+    config = function()
+      if not neovim.is_vscode() then
+        require('illuminate').configure({
+          modes_denylist = { 'v' }
+        })
+      end
+    end
+  }
 
   -- TODO: REMOVE LATER
   -- Key helper
