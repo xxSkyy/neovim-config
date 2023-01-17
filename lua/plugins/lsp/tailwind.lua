@@ -14,17 +14,17 @@ require 'lspconfig'.tailwindcss.setup {
     "vue",
     "rust",
   },
-  experimental = {
-    classRegex = {
-      [[class="([^"]*)]],
-      '~H""".*class="([^"]*)".*"""',
-    },
-  },
+  -- experimental = {
+  --   classRegex = {
+  --     [[class="([^"]*)]],
+  --     '~H""".*class="([^"]*)".*"""',
+  --   },
+  -- },
   init_options = {
     userLanguages = {
       rust = "html",
     },
   },
   root_dir = require 'lspconfig'.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js',
-    'postcss.config.ts', 'package.json', 'node_modules'),
+    'postcss.config.ts', 'windi.config.ts'),
 }
