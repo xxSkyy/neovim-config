@@ -22,8 +22,6 @@ require 'lspconfig'.tailwindcss.setup {
   },
   init_options = {
     userLanguages = {
-      eelixir = "html-eex",
-      eruby = "erb",
       rust = "html",
     },
   },
