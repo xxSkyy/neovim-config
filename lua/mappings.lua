@@ -55,6 +55,10 @@ if not neovim.is_vscode() then
   -- Close current buffer
   maps.n["<leader>cc"] = { "<cmd>lua require('close_buffers').delete({type = 'this'})<CR>", noremap = true,
     desc = "Close current buffer" }
+  maps.n["<leader>cr"] = { "<cmd>BufferLineCloseRight<CR>", noremap = true,
+    desc = "Close close all buffers to right" }
+  maps.n["<leader>cl"] = { "<cmd>BufferLineCloseLeft<CR>", noremap = true,
+    desc = "Close all buffers to left" }
 
   -- Dapui
   maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
