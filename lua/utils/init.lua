@@ -56,3 +56,48 @@ function neovim.require(package, --[[optional]] settings, --[[optional]] on_vsco
     require(package).setup(settings)
   end
 end
+
+function neovim.read_json_file(filename)
+  local Path = require 'plenary.path'
+
+  local path = Path:new(filename)
+  if not path:exists() then
+    return nil
+  end
+
+  local json_contents = path:read()
+  local json = vim.fn.json_decode(json_contents)
+
+  return json
+end
+
+function neovim.read_package_json()
+  return neovim.read_json_file 'package.json'
+end
+
+---Check if the given NPM package is installed in the current project.
+---@param package string
+---@return boolean
+function neovim.is_npm_package_installed(package)
+  local package_json = neovim.read_package_json()
+  if not package_json then
+    return false
+  end
+
+  if package_json.dependencies and package_json.dependencies[package] then
+    return true
+  end
+
+  if package_json.devDependencies and package_json.devDependencies[package] then
+    return true
+  end
+
+  return false
+end
+
+local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
+if has_cmp_nvim_lsp then
+  local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  neovim.capabilities = capabilities
+end

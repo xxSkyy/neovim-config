@@ -25,7 +25,7 @@ local server = {
       { buffer = bufnr }
     )
   end,
-  capabilities = Capabilities,
+  capabilities = neovim.capabilities,
   settings     = {
     -- to enable rust-analyzer settings visit:
     -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc

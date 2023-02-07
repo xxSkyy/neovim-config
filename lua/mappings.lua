@@ -69,6 +69,14 @@ if not neovim.is_vscode() then
   maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
   maps.n["<leader>dc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
 
+  -- Package info
+  maps.n["<leader>nv"] = { function() require("package-info").change_version() end, noremap = true,
+    desc = "Change package.json version" }
+  maps.n["<leader>ni"] = { function() require("package-info").install() end, noremap = true,
+    desc = "Install package.json dependency" }
+  maps.n["<leader>nd"] = { function() require("package-info").delete() end, silent = true, noremap = true,
+    desc = "Delete package.json dependency" }
+
 
   -- GitSigns
   maps.n["<leader>gj"] = { function() require("gitsigns").next_hunk() end, desc = "Next git hunk" }

@@ -26,8 +26,8 @@ end
 
 require 'lspconfig'.volar.setup {
   on_attach = require("lsp-format").on_attach,
-  capabilities = Capabilities,
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+  capabilities = neovim.capabilities,
+  filetypes = neovim.is_npm_package_installed 'vue' and { 'vue', 'typescript', 'javascript' } or { 'vue' },
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
   documentFeatures = {
     documentFormatting = {

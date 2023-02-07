@@ -279,4 +279,13 @@ require('packer').startup(function(use)
       neovim.require('mason-null-ls')
     end
   }
+
+  -- Package json helper
+  use({
+    "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
+    config = function()
+      neovim.require('package-info')
+    end
+  })
 end)

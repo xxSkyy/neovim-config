@@ -1,5 +1,5 @@
 require 'lspconfig'.tailwindcss.setup {
-  capabilities = Capabilities,
+  capabilities = neovim.capabilities,
   filetypes = {
     "css",
     "scss",
