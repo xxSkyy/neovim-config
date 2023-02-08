@@ -59,4 +59,5 @@ vim.diagnostic.config {
   }
 }
 
-
+-- Grey out search area on Leap search
+vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })

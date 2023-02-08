@@ -141,12 +141,15 @@ require('packer').startup(function(use)
   use "MunifTanjim/prettier.nvim"
 
   -- jumping over words
+  -- use {
+  --   'phaazon/hop.nvim',
+  --   branch = 'v2', -- optional but strongly recommended
+  --   config = function()
+  --     neovim.require('hop')
+  --   end
+  -- }
   use {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = function()
-      neovim.require('hop')
-    end
+    "ggandor/leap.nvim"
   }
 
   use "folke/lua-dev.nvim"
