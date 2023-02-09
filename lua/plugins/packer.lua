@@ -15,6 +15,22 @@ require('packer').startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
   use "onsails/lspkind.nvim"
 
+  -- Inlay hints
+  use { "simrat39/inlay-hints.nvim",
+    config = function()
+      neovim.require('inlay-hints')
+    end
+  }
+
+  -- Surround edits
+  use({
+    "kylechui/nvim-surround",
+    tag = "*",
+    config = function()
+      neovim.require('nvim-surround')
+    end
+  })
+
   use { 'mrjones2014/smart-splits.nvim',
     config = function()
       neovim.require('smart-splits')

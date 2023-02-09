@@ -64,6 +64,10 @@ if not neovim.is_vscode() then
   maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
   maps.n["<leader>Dc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
   maps.n["<leader>Dt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
+  maps.n["<leader>Db"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" }
+  maps.n["<leader>Dc"] = { "<cmd>lua require'dap'.continue()<cr>", desc = "Continue executing debugger" }
+  maps.n["<leader>Ds"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "Step through code" }
+  maps.n["<leader>Di"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "Inspect state" }
 
   -- DiffView
   maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
