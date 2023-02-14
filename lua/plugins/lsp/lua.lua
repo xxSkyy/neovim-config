@@ -1,4 +1,4 @@
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
   on_attach = require("lsp-format").on_attach,
   settings = {
     Lua = {

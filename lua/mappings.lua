@@ -1,7 +1,7 @@
 --[[ keys.lua ]]
 local is_available = neovim.is_available
 
-local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
+local maps = { i = {}, n = {}, v = {}, t = {},[""] = {} }
 
 maps[""]["<Space>"] = "<Nop>"
 
@@ -32,7 +32,6 @@ maps.v['<leader>p'] = { '"_dP', desc = "Paste on selection without yank" }
 
 -- If it's not under VSCode add those mappings
 if not neovim.is_vscode() then
-
   -- Normal --
   -- Standard Operations
   maps.n["<leader>fn"] = { "<cmd>enew<cr>", desc = "New File" }
@@ -53,12 +52,21 @@ if not neovim.is_vscode() then
   maps.n["<b"] = { "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer tab left" }
 
   -- Close current buffer
-  maps.n["<leader>cc"] = { "<cmd>lua require('close_buffers').delete({type = 'this'})<CR>", noremap = true,
-    desc = "Close current buffer" }
-  maps.n["<leader>cr"] = { "<cmd>BufferLineCloseRight<CR>", noremap = true,
-    desc = "Close close all buffers to right" }
-  maps.n["<leader>cl"] = { "<cmd>BufferLineCloseLeft<CR>", noremap = true,
-    desc = "Close all buffers to left" }
+  maps.n["<leader>cc"] = {
+    "<cmd>lua require('close_buffers').delete({type = 'this'})<CR>",
+    noremap = true,
+    desc = "Close current buffer"
+  }
+  maps.n["<leader>cr"] = {
+    "<cmd>BufferLineCloseRight<CR>",
+    noremap = true,
+    desc = "Close close all buffers to right"
+  }
+  maps.n["<leader>cl"] = {
+    "<cmd>BufferLineCloseLeft<CR>",
+    noremap = true,
+    desc = "Close all buffers to left"
+  }
 
   -- Dapui
   maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
@@ -69,17 +77,33 @@ if not neovim.is_vscode() then
   maps.n["<leader>Ds"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "Step through code" }
   maps.n["<leader>Di"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "Inspect state" }
 
+  -- Database
+  maps.n["<leader>Du"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle Database UI" }
+  maps.n["<leader>Df"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Database Find Buffer" }
+  maps.n["<leader>Dr"] = { "<cmd>DBUIRenameBuffer<cr>", desc = "Database Rename Buffer" }
+  maps.n["<leader>Dq"] = { "<cmd>DBUILastQueryInfo<cr>", desc = "Database last query info" }
+
   -- DiffView
   maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
   maps.n["<leader>dc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
 
   -- Package info
-  maps.n["<leader>nv"] = { function() require("package-info").change_version() end, noremap = true,
-    desc = "Change package.json version" }
-  maps.n["<leader>ni"] = { function() require("package-info").install() end, noremap = true,
-    desc = "Install package.json dependency" }
-  maps.n["<leader>nd"] = { function() require("package-info").delete() end, silent = true, noremap = true,
-    desc = "Delete package.json dependency" }
+  maps.n["<leader>nv"] = {
+    function() require("package-info").change_version() end,
+    noremap = true,
+    desc = "Change package.json version"
+  }
+  maps.n["<leader>ni"] = {
+    function() require("package-info").install() end,
+    noremap = true,
+    desc = "Install package.json dependency"
+  }
+  maps.n["<leader>nd"] = {
+    function() require("package-info").delete() end,
+    silent = true,
+    noremap = true,
+    desc = "Delete package.json dependency"
+  }
 
 
   -- GitSigns
@@ -203,14 +227,15 @@ if not neovim.is_vscode() then
   -- Git Diff view
   -- maps.n['gd'] = { '[[:DiffviewOpen<CR>]]' }
 
-  maps.n["<leader>gj"] = { function()
-    local language = vim.fn.input("Lang > ", "typescript")
-    local top_level = vim.fn.input("Main type name > ")
+  maps.n["<leader>gj"] = {
+    function()
+      local language = vim.fn.input("Lang > ", "typescript")
+      local top_level = vim.fn.input("Main type name > ")
 
-    vim.cmd(".!quicktype -l " .. language .. " --just-types --top-level " .. top_level)
-
-  end, desc = "Generate types from current line json" }
-
+      vim.cmd(".!quicktype -l " .. language .. " --just-types --top-level " .. top_level)
+    end,
+    desc = "Generate types from current line json"
+  }
 end
 
 neovim.set_mappings(maps)

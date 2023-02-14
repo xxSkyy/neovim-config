@@ -253,7 +253,7 @@ require('packer').startup(function(use)
     config = function()
       neovim.require('mason-lspconfig', {
         ensure_installed = {
-          "sumneko_lua", "denols",
+          "denols", "sqls",
           "rust_analyzer", "jsonls", "volar",
           "tsserver", "tailwindcss", "sqlls",
           "graphql", "dockerls", "cssls"
@@ -307,4 +307,36 @@ require('packer').startup(function(use)
       neovim.require('package-info')
     end
   })
+
+  -- SQL LSP
+  use 'nanotee/sqls.nvim'
+
+  -- Database
+  use {
+    "tpope/vim-dadbod",
+    opt = true,
+    requires = {
+      "kristijanhusak/vim-dadbod-ui",
+      "kristijanhusak/vim-dadbod-completion",
+    },
+    config = function()
+      vim.g.db_ui_save_location = vim.fn.stdpath "config" .. require("plenary.path").path.sep .. "db_ui"
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "sql",
+        },
+        command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "sql",
+          "mysql",
+          "plsql",
+        },
+      })
+    end,
+    cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+  }
 end)
