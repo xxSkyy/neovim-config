@@ -43,21 +43,13 @@ cmp.setup {
     end,
   },
   formatting = {
-    format = function(entry, vim_item)
+    format = function(_, vim_item)
       vim_item.kind = require("lspkind").presets.codicons[vim_item.kind]
           .. "  "
           .. vim_item.kind
-
-      vim_item.menu = ({
-            ['vim-dadbod-completion'] = '[DB]',
-          })[entry.source.name]
-
       return vim_item
     end,
   },
-  -- formatting = {
-  -- format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50, mode = 'symbol', ellipsis_char = '...' }),
-  -- },
   window = {
     completion = cmp.config.window.bordered(),
     documentations = cmp.config.window.bordered(),
