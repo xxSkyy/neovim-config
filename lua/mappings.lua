@@ -67,6 +67,11 @@ if not neovim.is_vscode() then
     noremap = true,
     desc = "Close all buffers to left"
   }
+  maps.n["<leader>ca"] = {
+    "<cmd>BufferLineCloseLeft<CR><cmd>BufferLineCloseRight<CR>",
+    noremap = true,
+    desc = "Close all buffers but selected one"
+  }
 
   -- Dapui
   maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
