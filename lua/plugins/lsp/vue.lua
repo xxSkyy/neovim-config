@@ -1,6 +1,5 @@
 local util = require 'lspconfig.util'
 local function get_typescript_server_path(root_dir)
-
   local global_ts = '/home/sky/.nvm/versions/node/v16.16.0/lib/node_modules/typescript/lib'
   if vim.fn.has('macunix') == 1 then
     -- Mac path
@@ -25,7 +24,9 @@ local function get_typescript_server_path(root_dir)
 end
 
 require 'lspconfig'.volar.setup {
-  on_attach = require("lsp-format").on_attach,
+  -- Vue has own formatting fine, lsp-format is just
+  -- a problem here
+  -- on_attach = require("lsp-format").on_attach,
   capabilities = neovim.capabilities,
   filetypes = neovim.is_npm_package_installed 'vue' and { 'vue', 'typescript', 'javascript' } or { 'vue' },
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
