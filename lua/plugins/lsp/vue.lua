@@ -24,9 +24,6 @@ local function get_typescript_server_path(root_dir)
 end
 
 require 'lspconfig'.volar.setup {
-  -- Vue has own formatting fine, lsp-format is just
-  -- a problem here
-  -- on_attach = require("lsp-format").on_attach,
   capabilities = neovim.capabilities,
   filetypes = neovim.is_npm_package_installed 'vue' and { 'vue', 'typescript', 'javascript' } or { 'vue' },
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),

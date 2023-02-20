@@ -7,6 +7,7 @@ if not have_vue then
     server = {
       on_attach = require("lsp-format").on_attach,
       capabilities = neovim.capabilities
-    }
+    },
+    filetypes = neovim.is_npm_package_installed 'vue' and {} or { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   }
 end
