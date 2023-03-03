@@ -55,6 +55,7 @@ if not neovim.is_vscode() then
   maps.n["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble quickfix window" }
   maps.n["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble loclist window" }
   maps.n["<leader>xr"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble lsp reference window" }
+  maps.n["<leader>xc"] = { "<cmd>TroubleClose<cr>", desc = "Close trouble window" }
 
   -- Navigate buffers
   maps.n["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" }
