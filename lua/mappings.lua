@@ -50,11 +50,11 @@ if not neovim.is_vscode() then
 
   -- Trouble
   maps.n["<leader>xx"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle touble window" }
-  maps.n["<leader>xw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble workspace window" }
-  maps.n["<leader>xd"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble document window" }
-  maps.n["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble quickfix window" }
-  maps.n["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble loclist window" }
-  maps.n["<leader>xr"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble lsp reference window" }
+  maps.n["<leader>xw"] = { "<cmd>Trouble workspace_diagnostics<cr>", desc = "Trouble workspace window" }
+  maps.n["<leader>xd"] = { "<cmd>Trouble document_diagnostics<cr>", desc = "Trouble document window" }
+  maps.n["<leader>xq"] = { "<cmd>Trouble quickfix<cr>", desc = "Trouble quickfix window" }
+  maps.n["<leader>xl"] = { "<cmd>Trouble loclist<cr>", desc = "Trouble loclist window" }
+  maps.n["<leader>xr"] = { "<cmd>Trouble lsp_references<cr>", desc = "Trouble lsp reference window" }
   maps.n["<leader>xc"] = { "<cmd>TroubleClose<cr>", desc = "Close trouble window" }
 
   -- Navigate buffers
