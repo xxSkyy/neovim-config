@@ -52,9 +52,11 @@ function neovim.require(package, --[[optional]] settings, --[[optional]] on_vsco
   on_vscode = on_vscode or false
   settings = settings or {}
 
-  if not neovim.is_vscode() and on_vscode == false then
-    require(package).setup(settings)
+  if neovim.is_vscode() and on_vscode == false then
+    return
   end
+
+  require(package).setup(settings)
 end
 
 function neovim.read_json_file(filename)

@@ -53,7 +53,7 @@ require('packer').startup(function(use)
   -- Comment out engine
   use { "numToStr/Comment.nvim",
     config = function()
-      neovim.require('Comment')
+      neovim.require('Comment', {}, true)
     end
   }
 
@@ -94,6 +94,12 @@ require('packer').startup(function(use)
     config = function()
       neovim.require('scope')
     end
+  }
+
+  -- Code action menu
+  use {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
   }
 
   -- Tree

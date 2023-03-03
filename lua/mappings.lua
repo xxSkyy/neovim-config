@@ -45,6 +45,17 @@ if not neovim.is_vscode() then
   maps.n["<leader>pS"] = { "<cmd>PackerStatus<cr>", desc = "Packer Status" }
   maps.n["<leader>pu"] = { "<cmd>PackerUpdate<cr>", desc = "Packer Update" }
 
+  -- CodeAction Menu
+  maps.n["<leader>a"] = { "<cmd>CodeActionMenu<cr>", desc = "Code action menu" }
+
+  -- Trouble
+  maps.n["<leader>xx"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle touble window" }
+  maps.n["<leader>xw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble workspace window" }
+  maps.n["<leader>xd"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble document window" }
+  maps.n["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble quickfix window" }
+  maps.n["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble loclist window" }
+  maps.n["<leader>xr"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble lsp reference window" }
+
   -- Navigate buffers
   maps.n["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" }
   maps.n["<S-h>"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer tab" }
