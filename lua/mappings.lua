@@ -86,13 +86,15 @@ if not neovim.is_vscode() then
   }
 
   -- Dapui
-  maps.n["<leader>Do"] = { function() require("dapui").open() end, desc = "DapUI Open" }
-  maps.n["<leader>Dc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
-  maps.n["<leader>Dt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
-  maps.n["<leader>Db"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" }
-  maps.n["<leader>Dc"] = { "<cmd>lua require'dap'.continue()<cr>", desc = "Continue executing debugger" }
-  maps.n["<leader>Ds"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "Step through code" }
-  maps.n["<leader>Di"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "Inspect state" }
+  maps.n["<leader>bo"] = { function() require("dapui").open() end, desc = "DapUI Open" }
+  maps.n["<leader>bc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
+  maps.n["<leader>bt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
+  maps.n["<leader>be"] = { function() require("dapui").editogglet() end, desc = "DapUI Edit expression" }
+  maps.n["<leader>bb"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" }
+  maps.n["<leader>bc"] = { "<cmd>lua require'dap'.continue()<cr>", desc = "Continue executing debugger" }
+  maps.n["<leader>bs"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "Step through code" }
+  maps.n["<leader>bi"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "Inspect state" }
+  maps.n["<leader>bl"] = { "<cmd>lua require'dap'.run_last()<cr>", desc = "Run last debug adapter" }
 
   -- Database
   maps.n["<leader>Du"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle Database UI" }
