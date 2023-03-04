@@ -230,9 +230,10 @@ if not neovim.is_vscode() then
   maps.n["<leader>tn"] = { "<cmd>tabnew<cr>" }
   maps.n["<leader>tc"] = { "<cmd>tabclose<cr>" }
 
-  maps.n["<leader>tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
-  maps.n["<leader>th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
-  maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
+  maps.n["<leader>tf"] = { ":ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
+  maps.n["<C-\\>"] = { ":ToggleTerm direction=float<cr>", desc = "ToggleTerm" }
+  maps.n["<leader>th"] = { ":ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
+  maps.n["<leader>tv"] = { ":ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
 
   maps.n["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
   maps.t["<F7>"] = maps.n["<F7>"]
