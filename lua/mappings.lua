@@ -230,10 +230,25 @@ if not neovim.is_vscode() then
   maps.n["<leader>tn"] = { "<cmd>tabnew<cr>" }
   maps.n["<leader>tc"] = { "<cmd>tabclose<cr>" }
 
-  maps.n["<leader>tf"] = { ":ToggleTerm direction=float<cr>", desc = "ToggleTerm float" }
-  maps.n["<C-\\>"] = { ":ToggleTerm direction=float<cr>", desc = "ToggleTerm" }
-  maps.n["<leader>th"] = { ":ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" }
-  maps.n["<leader>tv"] = { ":ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" }
+  -- Fix for toggleterm getting weird counts
+  local function runToggleTerm(args)
+    local count = vim.v.count
+    if (count < 0) then count = '' end
+
+    if not args then
+      args = "direction=float"
+    end
+
+    vim.cmd(":ToggleTerm " .. count .. args)
+  end
+
+  maps.n["<leader>tf"] = { function() runToggleTerm() end, desc = "ToggleTerm float" }
+  maps.n["<C-\\>"] = { function() runToggleTerm() end, desc = "ToggleTerm" }
+  maps.n["<leader>th"] = {
+    function() runToggleTerm("size=10 direction=horizontal") end,
+    desc = "ToggleTerm horizontal split"
+  }
+  maps.n["<leader>tv"] = { function() runToggleTerm("size=80 direction=vertical") end, desc = "ToggleTerm vertical split" }
 
   maps.n["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
   maps.t["<F7>"] = maps.n["<F7>"]
@@ -252,12 +267,21 @@ if not neovim.is_vscode() then
   -- Git Diff view
   -- maps.n['gd'] = { '[[:DiffviewOpen<CR>]]' }
 
+  -- Generate types from json
   maps.n["<leader>gj"] = {
     function()
       local language = vim.fn.input("Lang > ", "typescript")
       local top_level = vim.fn.input("Main type name > ")
 
       vim.cmd(".!quicktype -l " .. language .. " --just-types --top-level " .. top_level)
+    end,
+    desc = "Generate types from current line json"
+  }
+
+  maps.n["<leader>z"] = {
+    function()
+      print(vim.v.count)
+      vim.cmd(":ToggleTerm " .. vim.v.count .. "direction=float")
     end,
     desc = "Generate types from current line json"
   }
