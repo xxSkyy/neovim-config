@@ -102,6 +102,13 @@ require('packer').startup(function(use)
     cmd = 'CodeActionMenu',
   }
 
+  -- Better UI
+  use { 'stevearc/dressing.nvim',
+    config = function()
+      neovim.require('dressing')
+    end
+  }
+
   -- Tree
   use {
     "nvim-neo-tree/neo-tree.nvim",
