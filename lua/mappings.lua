@@ -82,7 +82,12 @@ if not neovim.is_vscode() then
   maps.n["<leader>ca"] = {
     "<cmd>BufferLineCloseLeft<CR><cmd>BufferLineCloseRight<CR>",
     noremap = true,
-    desc = "Close all buffers but selected one"
+    desc = "Close all buffers but active one"
+  }
+  maps.n["<leader>cA"] = {
+    "<cmd>BufferLineCloseLeft<CR><cmd>BufferLineCloseRight<CR><cmd>lua require('close_buffers').delete({type = 'this'})<CR>",
+    noremap = true,
+    desc = "Close all buffers with active one"
   }
 
   -- Dapui
