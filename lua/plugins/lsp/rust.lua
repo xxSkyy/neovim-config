@@ -1,7 +1,7 @@
 -- crates version helper
 require('crates').setup()
 
-local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/'
+local extension_path = vim.env.HOME .. '/.vscode-oss/extensions/vadimcn.vscode-lldb-1.8.1/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
@@ -18,12 +18,13 @@ local server = {
       { buffer = bufnr }
     )
 
-    vim.keymap.set(
-      "n",
-      "<Leader>a",
-      rt.code_action_group.code_action_group,
-      { buffer = bufnr }
-    )
+    -- Not needed CodeAction menu works with Rust Tools
+    -- vim.keymap.set(
+    --   "n",
+    --   "<Leader>a",
+    --   rt.code_action_group.code_action_group,
+    --   { buffer = bufnr }
+    -- )
   end,
   capabilities = neovim.capabilities,
   settings     = {
