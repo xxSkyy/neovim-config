@@ -293,11 +293,12 @@ require('packer').startup(function(use)
   -- Another commenting
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
+  -- Removed, use lazygit instead
   -- git diffview
-  use {
-    'sindrets/diffview.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-  }
+  -- use {
+  --   'sindrets/diffview.nvim',
+  --   requires = 'nvim-lua/plenary.nvim',
+  -- }
 
   use {
     "jose-elias-alvarez/null-ls.nvim",
