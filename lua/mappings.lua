@@ -94,8 +94,13 @@ if not neovim.is_vscode() then
   maps.n["<leader>bo"] = { function() require("dapui").open() end, desc = "DapUI Open" }
   maps.n["<leader>bc"] = { function() require("dapui").close() end, desc = "DapUI Close" }
   maps.n["<leader>bt"] = { function() require("dapui").toggle() end, desc = "DapUI Toggle" }
-  maps.n["<leader>be"] = { function() require("dapui").editogglet() end, desc = "DapUI Edit expression" }
+  -- maps.n["<leader>be"] = { function() require("dapui").() end, desc = "DapUI Edit expression" }
   maps.n["<leader>bb"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" }
+  maps.n["<leader>bB"] = {
+    "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+    desc = "Toggle breakpoint"
+  }
+  maps.n["<leader>bx"] = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", desc = "Clear breakpoints" }
   maps.n["<leader>bc"] = { "<cmd>lua require'dap'.continue()<cr>", desc = "Continue executing debugger" }
   maps.n["<leader>bs"] = { "<cmd>lua require'dap'.step_over()<cr>", desc = "Step through code" }
   maps.n["<leader>bi"] = { "<cmd>lua require'dap'.repl.open()<cr>", desc = "Inspect state" }
