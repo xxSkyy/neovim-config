@@ -1,6 +1,3 @@
---[[ keys.lua ]]
-local is_available = neovim.is_available
-
 local maps = { i = {}, n = {}, v = {}, t = {},[""] = {} }
 
 maps[""]["<Space>"] = "<Nop>"
@@ -154,7 +151,8 @@ if not neovim.is_vscode() then
 
   maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree" }
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
-  maps.n["<C-g>"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc = "Live grep" }
+  maps.n["<C-g>"] = { "<cmd>Telescope live_grep_args<CR>", desc = "Live grep args" }
+  maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
   -- maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
   maps.n["<C-y>"] = { "<cmd>lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>" }
 
