@@ -10,6 +10,8 @@ opt.relativenumber = true -- bool: Show relative line numbers
 opt.scrolloff = 4 -- int:  Min num lines of context
 opt.signcolumn = "yes" -- str:  Show the sign column
 
+
+
 -- [[ Filetypes ]]
 opt.encoding = 'utf8' -- str:  String encoding to use
 opt.fileencoding = 'utf8' -- str:  File encoding to use
@@ -36,6 +38,9 @@ opt.tabstop = 2 -- num:  Number of spaces tabs count for
 -- [[ Splits ]]
 opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window below the current one
+
+opt.cursorline = true
+opt.cursorlineopt = 'both'
 
 -- Use system clipboard
 opt.clipboard = 'unnamedplus'
