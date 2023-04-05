@@ -39,6 +39,7 @@ opt.tabstop = 2 -- num:  Number of spaces tabs count for
 opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window below the current one
 
+vim.cmd('set guicursor=n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor')
 opt.cursorline = true
 opt.cursorlineopt = 'both'
 
