@@ -66,6 +66,9 @@ require('packer').startup(function(use)
     }
   }
 
+  -- Sort lines
+  use "sQVe/sort.nvim"
+
   -- Window picker
   use {
     's1n7ax/nvim-window-picker',
@@ -286,10 +289,10 @@ require('packer').startup(function(use)
   -- Show indentation etc
   use { "lukas-reineke/indent-blankline.nvim",
     config = function()
-    neovim.require('indent_blankline', {
-      show_end_of_line = true,
-    })
-  end
+      neovim.require('indent_blankline', {
+        show_end_of_line = true,
+      })
+    end
   }
 
   -- Another commenting

@@ -137,13 +137,15 @@ if not neovim.is_vscode() then
   maps.n["<leader>gk"] = { function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" }
   maps.n["<leader>gl"] = { function() require("gitsigns").blame_line() end, desc = "View git blame" }
   maps.n["<leader>gL"] = { function() require("gitsigns").toggle_current_line_blame() end, desc = "View git blame" }
-  maps.n["<leader>gp"] = { function() require("gitsigns").preview_hunk() end, desc = "Preview git hunk" }
+  maps.n["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "View git diff" }
   maps.n["<leader>gh"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset git hunk" }
+  maps.n["<leader>gp"] = { function() require("gitsigns").preview_hunk() end, desc = "Preview git hunk" }
   maps.n["<leader>gr"] = { function() require("gitsigns").reset_buffer() end, desc = "Reset git buffer" }
   maps.n["<leader>gs"] = { function() require("gitsigns").stage_hunk() end, desc = "Stage git hunk" }
   maps.n["<leader>gu"] = { function() require("gitsigns").undo_stage_hunk() end, desc = "Unstage git hunk" }
-  maps.n["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "View git diff" }
 
+  maps.n["<leader>so"] = { "<cmd>Sort<CR>", noremap = true, desc = "Sort" }
+  maps.v["<leader>so"] = { "<esc><cmd>Sort<CR>", noremap = true, desc = "Sort" }
 
   maps.n["<leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", noremap = true, desc = "Open diagnostic" }
   maps.n["<leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", noremap = true, desc = "LSP Rename" }
