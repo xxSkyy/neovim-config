@@ -10,6 +10,11 @@ if not have_vue then
     },
     -- neovim.is_npm_package_installed 'vue' and {} or
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    single_file_support = false
+    single_file_support = false,
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = "non-relative"
+      }
+    }
   }
 end
