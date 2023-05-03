@@ -82,7 +82,6 @@ require('packer').startup(function(use)
           bo = {
             -- if the file type is one of following, the window will be ignored
             filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-
             -- if the buffer type is one of following, the window will be ignored
             buftype = { 'terminal', "quickfix" },
           },
@@ -130,8 +129,10 @@ require('packer').startup(function(use)
   -- statusline
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons',
-      opt = true }
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    }
   }
 
   -- tabs
@@ -269,10 +270,9 @@ require('packer').startup(function(use)
     config = function()
       neovim.require('mason-lspconfig', {
         ensure_installed = {
-          "denols", "sqls",
-          "rust_analyzer", "jsonls", "volar",
-          "tsserver", "tailwindcss", "sqlls",
-          "graphql", "dockerls", "cssls"
+          "denols", "rust_analyzer", "jsonls", "volar",
+          "tsserver", "tailwindcss", "sqlls", "graphql",
+          "dockerls", "cssls"
         },
       })
     end
