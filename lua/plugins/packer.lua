@@ -260,23 +260,9 @@ require('packer').startup(function(use)
   use "windwp/nvim-autopairs"
 
   -- UI Installer
-  use { "williamboman/mason.nvim",
-    config = function()
-      neovim.require('mason')
-    end
-  }
+  use { "williamboman/mason.nvim" }
 
-  use { "williamboman/mason-lspconfig.nvim",
-    config = function()
-      neovim.require('mason-lspconfig', {
-        ensure_installed = {
-          "denols", "rust_analyzer", "jsonls", "volar",
-          "tsserver", "tailwindcss", "sqlls", "graphql",
-          "dockerls", "cssls"
-        },
-      })
-    end
-  }
+  use { "williamboman/mason-lspconfig.nvim" }
 
   -- Debug Adapter Protocol
   use 'mfussenegger/nvim-dap'
