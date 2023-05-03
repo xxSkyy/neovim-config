@@ -4,11 +4,23 @@ require('neo-tree').setup({
   source_selector = {
     winbar = true,
     content_layout = "center",
-    tab_labels = {
-      filesystem = neovim.get_icon "FolderClosed" .. " File",
-      buffers = neovim.get_icon "DefaultFile" .. " Bufs",
-      git_status = neovim.get_icon "Git" .. " Git",
-      diagnostics = neovim.get_icon "Diagnostic" .. " Diagnostic",
+    sources = {
+      {
+        source = 'filesystem',
+        display_name = neovim.get_icon "FolderClosed" .. " File",
+      },
+      {
+        source = 'buffers',
+        display_name = neovim.get_icon "DefaultFile" .. " Bufs",
+      },
+      {
+        source = 'git_status',
+        display_name = neovim.get_icon "Git" .. " Git",
+      },
+      {
+        source = 'diagnostics',
+        display_name = neovim.get_icon "Diagnostic" .. " Diagnostic",
+      }
     },
   },
   default_component_configs = {
@@ -53,19 +65,20 @@ require('neo-tree').setup({
     follow_current_file = true,
     hijack_netrw_behavior = "open_current",
     use_libuv_file_watcher = true,
-    window = { mappings = {
-      h = "toggle_hidden",
-      ["Y"] = function(state)
-        local node = state.tree:get_node()
-        vim.fn.setreg('+', node.name)
-      end,
-      ["<C-y>"] = function(state)
-        local node = state.tree:get_node()
-        local full_path = node.path
-        local relative_path = full_path:sub(#state.path + 2)
-        vim.fn.setreg('+', relative_path)
-      end,
-    }
+    window = {
+      mappings = {
+        h = "toggle_hidden",
+        ["Y"] = function(state)
+          local node = state.tree:get_node()
+          vim.fn.setreg('+', node.name)
+        end,
+        ["<C-y>"] = function(state)
+          local node = state.tree:get_node()
+          local full_path = node.path
+          local relative_path = full_path:sub(#state.path + 2)
+          vim.fn.setreg('+', relative_path)
+        end,
+      }
     },
   },
   event_handlers = {
