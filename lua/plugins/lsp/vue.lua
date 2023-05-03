@@ -26,13 +26,17 @@ end
 
 require 'lspconfig'.volar.setup {
   capabilities = neovim.capabilities,
-  filetypes = neovim.is_npm_package_installed 'vue' and { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' } or { 'vue' },
+  filetypes = neovim.is_npm_package_installed 'vue' and
+  { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' } or { 'vue' },
   root_dir = require 'lspconfig'.util.root_pattern("package.json"),
   documentFeatures = {
     documentFormatting = {
       defaultPrintWidth = 60
     },
   },
+  on_attach = function(client)
+    client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+  end,
   on_new_config = function(new_config, new_root_dir)
     new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
   end

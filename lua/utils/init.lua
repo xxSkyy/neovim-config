@@ -100,6 +100,12 @@ end
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 if has_cmp_nvim_lsp then
-  local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = cmp_nvim_lsp.default_capabilities()
+  capabilities.workspace = {
+    didChangeWatchedFiles = {
+      dynamicRegistration = true
+    }
+  }
+
   neovim.capabilities = capabilities
 end
