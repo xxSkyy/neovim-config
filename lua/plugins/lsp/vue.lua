@@ -43,7 +43,9 @@ require 'lspconfig'.volar.setup {
     }
   },
   on_attach = function(client)
-    client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+    if client.resolved_capabilities then
+      client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+    end
   end,
   on_new_config = function(new_config, new_root_dir)
     new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
