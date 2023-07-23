@@ -278,7 +278,7 @@ if not neovim.is_vscode() then
       local language = vim.fn.input("Lang > ", "typescript")
       local top_level = vim.fn.input("Main type name > ")
 
-      vim.cmd(".!quicktype -l --no-enums " .. language .. " --just-types --top-level " .. top_level)
+      vim.cmd(".!quicktype -l " .. language .. " --no-enums --just-types --top-level " .. top_level)
     end,
     desc = "Generate types from current line json"
   }
