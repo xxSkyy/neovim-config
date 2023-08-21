@@ -70,7 +70,7 @@ if neovim.is_module_available("notify") then
     background_colour = "#000000",
   })
 
-  vim.notify = require('notify')
+  vim.notify = require("notify")
 end
 
 -- Grey out search area on Leap search
