@@ -1,4 +1,4 @@
-local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
+local maps = { i = {}, n = {}, v = {}, t = {},[""] = {} }
 
 maps[""]["<Space>"] = "<Nop>"
 
