@@ -66,7 +66,6 @@ vim.diagnostic.config {
 }
 
 if neovim.is_module_available("notify") then
-  print("Setting notify as vim.notify")
   require('notify').setup({
     background_colour = "#000000",
   })
