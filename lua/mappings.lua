@@ -66,6 +66,11 @@ if not neovim.is_vscode() then
     noremap = true,
     desc = "Close current buffer"
   }
+  maps.n["<leader>cC"] = {
+    "<cmd>lua require('close_buffers').delete({type = 'this', force = true})<CR>",
+    noremap = true,
+    desc = "Force close current buffer"
+  }
   maps.n["<leader>cr"] = {
     "<cmd>BufferLineCloseRight<CR>",
     noremap = true,
