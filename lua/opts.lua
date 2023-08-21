@@ -74,8 +74,6 @@ if neovim.is_module_available("notify") then
   vim.notify = require('notify')
 end
 
-vim.notify = neovim.notify
-
 -- Grey out search area on Leap search
 vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
