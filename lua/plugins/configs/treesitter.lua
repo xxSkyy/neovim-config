@@ -17,6 +17,7 @@ require 'nvim-treesitter.configs'.setup {
     "typescript",
     "lua",
     "dockerfile",
+    "tsx",
     "sql"
   },
   endwise = {
