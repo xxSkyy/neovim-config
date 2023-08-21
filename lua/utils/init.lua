@@ -37,8 +37,11 @@ function neovim.set_mappings(map_table, base)
   end
 end
 
+---- Check if module is already initialized
 function neovim.is_available(plugin) return packer_plugins ~= nil and packer_plugins[plugin] ~= nil end
 
+---- Check if module is just installed, no need
+-- to be initialized already.
 function neovim.is_module_available(name)
   if package.loaded[name] then
     return true
