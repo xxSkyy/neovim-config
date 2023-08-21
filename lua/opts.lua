@@ -65,6 +65,17 @@ vim.diagnostic.config {
   }
 }
 
+if neovim.is_module_available("notify") then
+  print("Setting notify as vim.notify")
+  require('notify').setup({
+    background_colour = "#000000",
+  })
+
+  vim.notify = require('notify')
+end
+
+vim.notify = neovim.notify
+
 -- Grey out search area on Leap search
 vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 

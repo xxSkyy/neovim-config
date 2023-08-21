@@ -6,8 +6,6 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use "lukas-reineke/lsp-format.nvim"
 
-  use "rcarriga/nvim-notify"
-
   -- Completion
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -246,6 +244,15 @@ require('packer').startup(function(use)
       end
     end
   }
+
+  -- Fancy notifications
+  use { 'rcarriga/nvim-notify',
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+
+    end }
 
   -- TODO: REMOVE LATER
   -- Key helper
