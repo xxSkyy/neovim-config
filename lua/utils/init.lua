@@ -39,6 +39,21 @@ end
 
 function neovim.is_available(plugin) return packer_plugins ~= nil and packer_plugins[plugin] ~= nil end
 
+function neovim.is_module_available(name)
+  if package.loaded[name] then
+    return true
+  else
+    for _, searcher in ipairs(package.searchers or package.loaders) do
+      local loader = searcher(name)
+      if type(loader) == 'function' then
+        package.preload[name] = loader
+        return true
+      end
+    end
+    return false
+  end
+end
+
 function neovim.load_folder(path)
   for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config') .. '/lua/' .. path:gsub("%.", "/"), [[v:val =~ '\.lua$']])) do
     require(path .. "." .. file:gsub('%.lua$', ''))
